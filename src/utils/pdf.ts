@@ -1,15 +1,15 @@
-import type { Editor } from "@tiptap/core";
+import type { Editor } from '@tiptap/core';
 
-import type { ExportPdfOptions } from "@/extensions/ExportPdf";
+import type { ExportPdfOptions } from '@/extensions/ExportPdf';
 
 function printHtml(
   content: string,
   exportPdfOptions: Partial<ExportPdfOptions>
 ) {
-  const iframe: HTMLIFrameElement = document.createElement("iframe");
+  const iframe: HTMLIFrameElement = document.createElement('iframe');
   iframe.setAttribute(
-    "style",
-    "position: absolute; width: 0; height: 0; top: 0; left: 0;"
+    'style',
+    'position: absolute; width: 0; height: 0; top: 0; left: 0;'
   );
   document.body.appendChild(iframe);
 
@@ -22,12 +22,12 @@ function printHtml(
     <head>
       <style>
         @page {
-          size: ${exportPdfOptions.paperSize || "A4"};
-          margin: ${exportPdfOptions.margins?.top || "1in"} ${
-    exportPdfOptions.margins?.right || "0.4in"
-  } ${exportPdfOptions.margins?.bottom || "1in"} ${
-    exportPdfOptions.margins?.left || "0.4in"
-  };
+          size: ${exportPdfOptions.paperSize || 'A4'};
+          margin: ${exportPdfOptions.margins?.top || '1in'} ${
+            exportPdfOptions.margins?.right || '0.4in'
+          } ${exportPdfOptions.margins?.bottom || '1in'} ${
+            exportPdfOptions.margins?.left || '0.4in'
+          };
         }
 
         * {
@@ -93,13 +93,13 @@ function printHtml(
   doc.write(html);
   doc.close();
 
-  iframe.addEventListener("load", () => {
+  iframe.addEventListener('load', () => {
     setTimeout(() => {
       try {
         iframe.contentWindow?.focus();
         iframe.contentWindow?.print();
       } catch (err) {
-        console.error("Print failed", err);
+        console.error('Print failed', err);
       }
       setTimeout(() => {
         document.body.removeChild(iframe);
@@ -114,12 +114,12 @@ export function exportToPdf(
 ) {
   const content = editor.getHTML();
   const defaultOptions: ExportPdfOptions = {
-    paperSize: "A4",
+    paperSize: 'A4',
     margins: {
-      top: "1in",
-      right: "0.4in",
-      bottom: "1in",
-      left: "0.4in",
+      top: '1in',
+      right: '0.4in',
+      bottom: '1in',
+      left: '0.4in',
     },
     divider: false,
     spacer: false,

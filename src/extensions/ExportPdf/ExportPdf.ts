@@ -1,9 +1,9 @@
-import { Extension } from "@tiptap/core";
+import { Extension } from '@tiptap/core';
 
-import { ActionButton } from "@/components";
-import { exportToPdf } from "@/utils/pdf";
+import { ActionButton } from '@/components';
+import { exportToPdf } from '@/utils/pdf';
 
-import type { GeneralOptions, PaperSize, PageMargin } from "@/types";
+import type { GeneralOptions, PaperSize, PageMargin } from '@/types';
 
 export interface ExportPdfOptions extends GeneralOptions<ExportPdfOptions> {
   paperSize: PaperSize;
@@ -16,16 +16,16 @@ export interface ExportPdfOptions extends GeneralOptions<ExportPdfOptions> {
 }
 
 export const ExportPdf = /* @__PURE__ */ Extension.create<ExportPdfOptions>({
-  name: "exportPdf",
+  name: 'exportPdf',
   addOptions() {
     return {
       ...this.parent?.(),
-      paperSize: "Letter",
+      paperSize: 'Letter',
       margins: {
-        top: "0.4in",
-        right: "0.4in",
-        bottom: "0.4in",
-        left: "0.4in",
+        top: '0.4in',
+        right: '0.4in',
+        bottom: '0.4in',
+        left: '0.4in',
       },
       button: ({ editor, extension, t }) => ({
         component: ActionButton,
@@ -33,8 +33,8 @@ export const ExportPdf = /* @__PURE__ */ Extension.create<ExportPdfOptions>({
           action: () => {
             exportToPdf(editor, extension.options);
           },
-          icon: "ExportPdf",
-          tooltip: t("editor.exportPdf.tooltip"),
+          icon: 'ExportPdf',
+          tooltip: t('editor.exportPdf.tooltip'),
           isActive: () => false,
           disabled: false,
         },
