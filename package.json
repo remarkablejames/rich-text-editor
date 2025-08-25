@@ -5,10 +5,9 @@
   "packageManager": "pnpm@8.15.9",
   "description": "A modern WYSIWYG rich text editor based on tiptap and shadcn ui for React",
   "license": "MIT",
-  "homepage": "https://reactjs-tiptap-editor.vercel.app/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hunghg255/reactjs-tiptap-editor.git"
+    "url": "git+https://github.com/remarkablejames/rich-text-editor.git"
   },
   "bugs": "https://github.com/hunghg255/reactjs-tiptap-editor/issues",
   "keywords": [
