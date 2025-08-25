@@ -13,11 +13,15 @@ import { globbySync } from "globby";
 export default defineConfig(async ({ mode }) => {
   const isDev = mode !== "production";
 
-  const entry = [
-    path.resolve(__dirname, "src/index.ts"),
-    path.resolve(__dirname, "src/locale-bundle.ts"),
-    path.resolve(__dirname, "src/components/menus/bubble-extra.ts"),
-  ];
+  const entry = {
+    index: path.resolve(__dirname, "src/index.ts"),
+    "locale-bundle": path.resolve(__dirname, "src/locale-bundle.ts"),
+    "bubble-extra": path.resolve(
+      __dirname,
+      "src/components/menus/bubble-extra.ts"
+    ),
+    renderer: path.resolve(__dirname, "src/renderer/index.ts"),
+  };
 
   const files = await globbySync("src/extensions/**/*.ts", {
     ignore: ["src/**/*/index.ts", "src/**/*.spec.ts"], // Exclude .spec.ts files
@@ -30,8 +34,9 @@ export default defineConfig(async ({ mode }) => {
     const vv = v.replace("src/", "");
     const [, _name, i] = vv.split("/");
     if (!_name?.includes("BaseKit")) {
-      entry.push(
-        path.resolve(__dirname, `src/extensions/${_name}/${_name}.ts`)
+      entry[_name] = path.resolve(
+        __dirname,
+        `src/extensions/${_name}/${_name}.ts`
       );
 
       exports[`./${_name.toLowerCase()}`] = {
@@ -78,6 +83,17 @@ export default defineConfig(async ({ mode }) => {
     import: {
       types: "./lib/bubble-extra.d.ts",
       default: "./lib/bubble-extra.js",
+    },
+  };
+
+  exports["./renderer"] = {
+    require: {
+      types: "./lib/renderer.d.cts",
+      default: "./lib/renderer.cjs",
+    },
+    import: {
+      types: "./lib/renderer.d.ts",
+      default: "./lib/renderer.js",
     },
   };
 

@@ -59,6 +59,16 @@
     "./lib/*": "./lib/*",
     "./package.json": "./package.json",
     "./*": "./lib/*",
+    "./renderer": {
+      "require": {
+        "types": "./lib/renderer.d.cts",
+        "default": "./lib/renderer.cjs"
+      },
+      "import": {
+        "types": "./lib/renderer.d.ts",
+        "default": "./lib/renderer.js"
+      }
+    },
     "./attachment": {
       "require": {
         "types": "./lib/Attachment.d.cts",
@@ -587,6 +597,9 @@
       ],
       "bubble-extra": [
         "./lib/bubble-extra.d.ts"
+      ],
+      "renderer": [
+        "./lib/renderer.d.ts"
       ],
       "*": [
         "./lib/*",

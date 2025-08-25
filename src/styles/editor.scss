@@ -32,7 +32,7 @@
         width: 100%;
 
         .column-resize-handle {
-          @apply richtext-bottom-[-2px] richtext-absolute richtext-right-[-2px] richtext-top-0 richtext-w-1 richtext-z-10 richtext-pointer-events-none richtext-bg-primary;
+          @apply richtext-bottom-[-2px] richtext-absolute richtext-right-[-2px] richtext-top-0 richtext-w-1 richtext-border-[#d1d5db] richtext-z-10 richtext-pointer-events-none richtext-bg-[#d1d5db];
         }
         .resize-cursor {
           cursor: 'col-resize';
