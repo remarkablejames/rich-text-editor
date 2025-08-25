@@ -16,16 +16,7 @@
     "tiptap",
     "editor",
     "wysiwyg",
-    "rich-text",
-    "reactjs-tiptap-editor",
-    "tiptap-editor",
-    "tiptap-react",
-    "tiptap-react-editor",
-    "tiptap-react-wysiwyg",
-    "tiptap-react-rich-text",
-    "tiptap-react-rc-editor",
-    "tiptap-react-rc-wysiwyg",
-    "tiptap-react-rc-rich-text"
+    "rich-text"
   ],
   "sideEffects": false,
   "main": "./lib/index.cjs",
