@@ -33,7 +33,7 @@ function CharactorCount({ editor, extensions }: IPropsCharactorCount) {
   return (
     <div className="richtext-flex richtext-items-center richtext-justify-between richtext-p-3 richtext-border-t">
       <div className="richtext-flex richtext-flex-col">
-        <div className="richtext-flex richtext-justify-end richtext-gap-3 richtext-text-sm">
+        <div className="richtext-flex richtext-justify-end richtext-gap-3 richtext-text-xs richtext-text-neutral-500 dark:richtext-text-neutral-400">
           <span>
             {editor.storage.characterCount.characters()}
             /

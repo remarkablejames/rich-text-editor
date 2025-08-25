@@ -10,33 +10,33 @@ export interface HorizontalRuleOptions
   GeneralOptions<HorizontalRuleOptions> {}
 
 export const HorizontalRule = /* @__PURE__ */ TiptapHorizontalRule.extend<HorizontalRuleOptions>({
-  renderHTML() {
-    return [
-      'div',
-      mergeAttributes(this.options.HTMLAttributes, {
-        'data-type': this.name,
-      }),
-      ['hr'],
-    ];
-  },
-  addOptions() {
-    return {
-      ...this.parent?.(),
-      button: ({ editor, t }) => ({
-        component: ActionButton,
-        componentProps: {
-          action: () => editor.commands.setHorizontalRule(),
-          disabled: !editor.can().setHorizontalRule(),
-          icon: 'Minus',
-          shortcutKeys: ['mod', 'alt', 'S'],
-          tooltip: t('editor.horizontalrule.tooltip'),
-        },
-      }),
-    };
-  },
-  addKeyboardShortcuts() {
-    return {
-      'Mod-Alt-s': () => this.editor.commands.setHorizontalRule(),
-    };
-  },
+    renderHTML() {
+        return [
+            'div',
+            mergeAttributes(this.options.HTMLAttributes, {
+                'data-type': this.name,
+            }),
+            ['hr', { style: 'border-color: #d1d5db; background-color: #d1d5db;' }],
+        ];
+    },
+    addOptions() {
+        return {
+            ...this.parent?.(),
+            button: ({ editor, t }) => ({
+                component: ActionButton,
+                componentProps: {
+                    action: () => editor.commands.setHorizontalRule(),
+                    disabled: !editor.can().setHorizontalRule(),
+                    icon: 'Minus',
+                    shortcutKeys: ['mod', 'alt', 'S'],
+                    tooltip: t('editor.horizontalrule.tooltip'),
+                },
+            }),
+        };
+    },
+    addKeyboardShortcuts() {
+        return {
+            'Mod-Alt-s': () => this.editor.commands.setHorizontalRule(),
+        };
+    },
 });
