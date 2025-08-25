@@ -1,0 +1,37 @@
+.reactjs-tiptap-render-engine.reactjs-tiptap-render-engine {
+  .ProseMirror.ProseMirror.ProseMirror {
+    @apply richtext-caret-transparent richtext-outline-0 richtext-pr-8 richtext-pl-20 richtext-py-16 richtext-z-0 lg:richtext-pl-8 lg:richtext-pr-8;
+    min-height: auto;
+    padding: 16px 24px;
+    cursor: default;
+    user-select: text;
+
+    // Remove hover effects for read-only
+    [data-type='horizontalRule']:hover {
+      background: transparent;
+    }
+
+    .is-empty::before,
+    .is-editor-empty:first-child::before,
+    p.is-editor-empty:first-child::before {
+      display: none;
+    }
+
+    // Disable image interactions
+    .image-view {
+      .image-view__body {
+        &:hover {
+          outline-color: transparent;
+          .image-view__body__button-wrap {
+            display: none;
+          }
+        }
+      }
+    }
+
+    // Hide image resizers
+    .image-resizer {
+      display: none !important;
+    }
+  }
+}
