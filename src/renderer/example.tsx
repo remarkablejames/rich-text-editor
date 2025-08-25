@@ -92,7 +92,9 @@ export function RendererExample() {
   return (
     <div style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
       <div style={{ marginBottom: '2rem' }}>
-        <h1>Rich Text Renderer Examples</h1>
+        <h1>
+          Rich Text Renderer Examples
+        </h1>
 
         <div style={{ marginBottom: '1rem' }}>
           <button
@@ -135,14 +137,16 @@ export function RendererExample() {
       </div>
 
       <div style={{ marginTop: '2rem', fontSize: '0.875rem', color: '#6b7280' }}>
-        <h3>Usage:</h3>
+        <h3>
+          Usage:
+        </h3>
         <pre style={{
           backgroundColor: '#f3f4f6',
           padding: '1rem',
           borderRadius: '0.25rem',
           overflow: 'auto'
         }}>
-{`import { RichTextRenderer } from 'rich-text-editor/renderer';
+          {`import { RichTextRenderer } from 'rich-text-editor/renderer';
 
 function MyComponent() {
   const htmlContent = '...'; // HTML from your rich text editor
