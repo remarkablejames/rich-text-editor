@@ -15,7 +15,7 @@ next:
 ## Usage
 
 ```tsx
-import { TextUnderline } from 'reactjs-tiptap-editor/textunderline'; // [!code ++]
+import { TextUnderline } from '@remarkablejames/rich-text-editor/textunderline'; // [!code ++]
 
 const extensions = [
   ...,

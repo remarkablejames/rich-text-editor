@@ -13,7 +13,7 @@ The MultiColumn extension allows you to create multi-column layouts in your edit
 ## Usage
 
 ```tsx
-import { ColumnActionButton } from 'reactjs-tiptap-editor/multicolumn'; // [!code ++]
+import { ColumnActionButton } from '@remarkablejames/rich-text-editor/multicolumn'; // [!code ++]
 
 const extensions = [
   ...,

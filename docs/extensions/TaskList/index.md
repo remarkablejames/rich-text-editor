@@ -15,7 +15,7 @@ next:
 ## Usage
 
 ```tsx
-import { TaskList } from 'reactjs-tiptap-editor/tasklist'; // [!code ++]
+import { TaskList } from '@remarkablejames/rich-text-editor/tasklist'; // [!code ++]
 
 const extensions = [
   ...,

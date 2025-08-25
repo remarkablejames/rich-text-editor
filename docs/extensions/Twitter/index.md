@@ -15,7 +15,7 @@ Twitter is a node extension that allows you to add an Twitter to your editor.
 ## Usage
 
 ```tsx
-import { Twitter } from 'reactjs-tiptap-editor/twitter'; // [!code ++]
+import { Twitter } from '@remarkablejames/rich-text-editor/twitter'; // [!code ++]
 
 const extensions = [
   ...,
@@ -28,7 +28,7 @@ const extensions = [
 ## Configuration bubble menu
 
 ```tsx
-import { BubbleMenuTwitter } from 'reactjs-tiptap-editor/bubble-extra'; // [!code ++]
+import { BubbleMenuTwitter } from '@remarkablejames/rich-text-editor/bubble-extra'; // [!code ++]
 
 const App = () => {
 

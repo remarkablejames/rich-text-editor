@@ -15,7 +15,7 @@ next:
 ## Usage
 
 ```tsx
-import { TextAlign } from 'reactjs-tiptap-editor/textalign'; // [!code ++]
+import { TextAlign } from '@remarkablejames/rich-text-editor/textalign'; // [!code ++]
 
 const extensions = [
   ...,

@@ -15,7 +15,7 @@ ListItem is a node extension that allows you to add a list item to your editor.
 Usage
 
 ```tsx
-import { ListItem } from 'reactjs-tiptap-editor/listitem'; // [!code ++]
+import { ListItem } from '@remarkablejames/rich-text-editor/listitem'; // [!code ++]
 
 const extensions = [
   ...,

@@ -13,7 +13,7 @@ next:
 ## Usage
 
 ```tsx
-import { ExportPdf } from 'reactjs-tiptap-editor/exportpdf'; // [!code ++]
+import { ExportPdf } from '@remarkablejames/rich-text-editor/exportpdf'; // [!code ++]
 
 const extensions = [
   ...,
@@ -124,7 +124,7 @@ type PageMargin =
 Example usage:
 
 ```ts
-import { ExportPdf } from 'reactjs-tiptap-editor/exportpdf';
+import { ExportPdf } from '@remarkablejames/rich-text-editor/exportpdf';
 
 ExportPdf.configure({
   paperSize: 'A4',

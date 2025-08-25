@@ -15,7 +15,7 @@ The Color extension allows you to add color to your editor.
 ## Usage
 
 ```tsx
-import { Color } from 'reactjs-tiptap-editor/color'; // [!code ++]
+import { Color } from '@remarkablejames/rich-text-editor/color'; // [!code ++]
 
 const extensions = [
   ...,
@@ -34,7 +34,7 @@ Default: `undefined`
 An array of color options to display in the color picker. If not provided, a default set of colors will be used.
 
 ```js
-import { COLORS_LIST } from 'reactjs-tiptap-editor'
+import { COLORS_LIST } from '@remarkablejames/rich-text-editor'
 ```
 
 ### defaultColor
@@ -43,7 +43,7 @@ Type: `string`\
 Default: `undefined`
 
 ```js
-import { DEFAULT_COLOR } from 'reactjs-tiptap-editor'
+import { DEFAULT_COLOR } from '@remarkablejames/rich-text-editor'
 ```
 
 ### initialDisplayedColor

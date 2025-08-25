@@ -1,7 +1,7 @@
 import { useCallback, useState, useEffect } from "react";
 
-import RichTextEditor, { BaseKit } from "reactjs-tiptap-editor";
-import { locale } from "reactjs-tiptap-editor/locale-bundle";
+import RichTextEditor, { BaseKit } from "@remarkablejames/rich-text-editor";
+import { locale } from "@remarkablejames/rich-text-editor/locale-bundle";
 
 import {
   BubbleMenuTwitter,
@@ -9,53 +9,53 @@ import {
   BubbleMenuExcalidraw,
   BubbleMenuMermaid,
   BubbleMenuDrawer,
-} from "reactjs-tiptap-editor/bubble-extra";
+} from "@remarkablejames/rich-text-editor/bubble-extra";
 
-import { Attachment } from "reactjs-tiptap-editor/attachment";
-import { Blockquote } from "reactjs-tiptap-editor/blockquote";
-import { Bold } from "reactjs-tiptap-editor/bold";
-import { BulletList } from "reactjs-tiptap-editor/bulletlist";
-import { Clear } from "reactjs-tiptap-editor/clear";
-import { Code } from "reactjs-tiptap-editor/code";
-import { CodeBlock } from "reactjs-tiptap-editor/codeblock";
-import { Color } from "reactjs-tiptap-editor/color";
-import { ColumnActionButton } from "reactjs-tiptap-editor/multicolumn";
-import { Emoji } from "reactjs-tiptap-editor/emoji";
-import { FontFamily } from "reactjs-tiptap-editor/fontfamily";
-import { FontSize } from "reactjs-tiptap-editor/fontsize";
-import { FormatPainter } from "reactjs-tiptap-editor/formatpainter";
-import { Heading } from "reactjs-tiptap-editor/heading";
-import { Highlight } from "reactjs-tiptap-editor/highlight";
-import { History } from "reactjs-tiptap-editor/history";
-import { HorizontalRule } from "reactjs-tiptap-editor/horizontalrule";
-import { Iframe } from "reactjs-tiptap-editor/iframe";
-import { Image } from "reactjs-tiptap-editor/image";
-import { ImageGif } from "reactjs-tiptap-editor/imagegif";
-import { ImportWord } from "reactjs-tiptap-editor/importword";
-import { Indent } from "reactjs-tiptap-editor/indent";
-import { Italic } from "reactjs-tiptap-editor/italic";
-import { LineHeight } from "reactjs-tiptap-editor/lineheight";
-import { Link } from "reactjs-tiptap-editor/link";
-import { Mention } from "reactjs-tiptap-editor/mention";
-import { MoreMark } from "reactjs-tiptap-editor/moremark";
-import { OrderedList } from "reactjs-tiptap-editor/orderedlist";
-import { SearchAndReplace } from "reactjs-tiptap-editor/searchandreplace";
-import { SlashCommand } from "reactjs-tiptap-editor/slashcommand";
-import { Strike } from "reactjs-tiptap-editor/strike";
-import { Table } from "reactjs-tiptap-editor/table";
-import { TableOfContents } from "reactjs-tiptap-editor/tableofcontent";
-import { TaskList } from "reactjs-tiptap-editor/tasklist";
-import { TextAlign } from "reactjs-tiptap-editor/textalign";
-import { TextUnderline } from "reactjs-tiptap-editor/textunderline";
-import { Video } from "reactjs-tiptap-editor/video";
-import { TextDirection } from "reactjs-tiptap-editor/textdirection";
-import { Katex } from "reactjs-tiptap-editor/katex";
-import { Drawer } from "reactjs-tiptap-editor/drawer";
-import { Excalidraw } from "reactjs-tiptap-editor/excalidraw";
-import { Twitter } from "reactjs-tiptap-editor/twitter";
-import { Mermaid } from "reactjs-tiptap-editor/mermaid";
+import { Attachment } from "@remarkablejames/rich-text-editor/attachment";
+import { Blockquote } from "@remarkablejames/rich-text-editor/blockquote";
+import { Bold } from "@remarkablejames/rich-text-editor/bold";
+import { BulletList } from "@remarkablejames/rich-text-editor/bulletlist";
+import { Clear } from "@remarkablejames/rich-text-editor/clear";
+import { Code } from "@remarkablejames/rich-text-editor/code";
+import { CodeBlock } from "@remarkablejames/rich-text-editor/codeblock";
+import { Color } from "@remarkablejames/rich-text-editor/color";
+import { ColumnActionButton } from "@remarkablejames/rich-text-editor/multicolumn";
+import { Emoji } from "@remarkablejames/rich-text-editor/emoji";
+import { FontFamily } from "@remarkablejames/rich-text-editor/fontfamily";
+import { FontSize } from "@remarkablejames/rich-text-editor/fontsize";
+import { FormatPainter } from "@remarkablejames/rich-text-editor/formatpainter";
+import { Heading } from "@remarkablejames/rich-text-editor/heading";
+import { Highlight } from "@remarkablejames/rich-text-editor/highlight";
+import { History } from "@remarkablejames/rich-text-editor/history";
+import { HorizontalRule } from "@remarkablejames/rich-text-editor/horizontalrule";
+import { Iframe } from "@remarkablejames/rich-text-editor/iframe";
+import { Image } from "@remarkablejames/rich-text-editor/image";
+import { ImageGif } from "@remarkablejames/rich-text-editor/imagegif";
+import { ImportWord } from "@remarkablejames/rich-text-editor/importword";
+import { Indent } from "@remarkablejames/rich-text-editor/indent";
+import { Italic } from "@remarkablejames/rich-text-editor/italic";
+import { LineHeight } from "@remarkablejames/rich-text-editor/lineheight";
+import { Link } from "@remarkablejames/rich-text-editor/link";
+import { Mention } from "@remarkablejames/rich-text-editor/mention";
+import { MoreMark } from "@remarkablejames/rich-text-editor/moremark";
+import { OrderedList } from "@remarkablejames/rich-text-editor/orderedlist";
+import { SearchAndReplace } from "@remarkablejames/rich-text-editor/searchandreplace";
+import { SlashCommand } from "@remarkablejames/rich-text-editor/slashcommand";
+import { Strike } from "@remarkablejames/rich-text-editor/strike";
+import { Table } from "@remarkablejames/rich-text-editor/table";
+import { TableOfContents } from "@remarkablejames/rich-text-editor/tableofcontent";
+import { TaskList } from "@remarkablejames/rich-text-editor/tasklist";
+import { TextAlign } from "@remarkablejames/rich-text-editor/textalign";
+import { TextUnderline } from "@remarkablejames/rich-text-editor/textunderline";
+import { Video } from "@remarkablejames/rich-text-editor/video";
+import { TextDirection } from "@remarkablejames/rich-text-editor/textdirection";
+import { Katex } from "@remarkablejames/rich-text-editor/katex";
+import { Drawer } from "@remarkablejames/rich-text-editor/drawer";
+import { Excalidraw } from "@remarkablejames/rich-text-editor/excalidraw";
+import { Twitter } from "@remarkablejames/rich-text-editor/twitter";
+import { Mermaid } from "@remarkablejames/rich-text-editor/mermaid";
 
-import "reactjs-tiptap-editor/style.css";
+import "@remarkablejames/rich-text-editor/style.css";
 import "prism-code-editor-lightweight/layout.css";
 import "prism-code-editor-lightweight/themes/github-dark.css";
 

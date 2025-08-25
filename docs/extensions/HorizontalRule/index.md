@@ -15,7 +15,7 @@ next:
 ## Usage
 
 ```tsx
-import { HorizontalRule } from 'reactjs-tiptap-editor/horizontalrule'; // [!code ++]
+import { HorizontalRule } from '@remarkablejames/rich-text-editor/horizontalrule'; // [!code ++]
 
 const extensions = [
   ...,

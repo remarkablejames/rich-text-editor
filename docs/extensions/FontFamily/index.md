@@ -15,7 +15,7 @@ The Font Family extension allows you to change the font family of your editor.
 ## Usage
 
 ```tsx
-import { FontFamily } from 'reactjs-tiptap-editor/fontfamily'; // [!code ++]
+import { FontFamily } from '@remarkablejames/rich-text-editor/fontfamily'; // [!code ++]
 
 const extensions = [
   ...,
@@ -33,7 +33,7 @@ Type: `(string | { value: string; name: string })[]`
 Set the font list, supporting two formats:
 
 ```js
-import { DEFAULT_FONT_FAMILY_LIST, FontFamily } from 'reactjs-tiptap-editor/fontfamily'
+import { DEFAULT_FONT_FAMILY_LIST, FontFamily } from '@remarkablejames/rich-text-editor/fontfamily'
 
 FontFamily.configure({
   fontFamilyList: [

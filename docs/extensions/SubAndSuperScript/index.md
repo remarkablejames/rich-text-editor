@@ -13,7 +13,7 @@ The SubAndSuperScript extension allows you to subscript text in your editor.
 ## Usage
 
 ```tsx
-import { SubAndSuperScript } from 'reactjs-tiptap-editor/subandsuperscript'; // [!code ++]
+import { SubAndSuperScript } from '@remarkablejames/rich-text-editor/subandsuperscript'; // [!code ++]
 
 const extensions = [
   ...,

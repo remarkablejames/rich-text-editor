@@ -17,7 +17,7 @@ next:
 
 ```tsx
 
-import { Katex } from 'reactjs-tiptap-editor/katex'; // [!code ++]
+import { Katex } from '@remarkablejames/rich-text-editor/katex'; // [!code ++]
 
 import 'katex/dist/katex.min.css'; // [!code ++]
 
@@ -31,7 +31,7 @@ const extensions = [
 ## Configuration bubble menu
 
 ```tsx
-import { BubbleMenuKatex } from 'reactjs-tiptap-editor/bubble-extra'; // [!code ++]
+import { BubbleMenuKatex } from '@remarkablejames/rich-text-editor/bubble-extra'; // [!code ++]
 
 const App = () => {
 

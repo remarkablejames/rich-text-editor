@@ -13,7 +13,7 @@ next:
 ## Usage
 
 ```tsx
-import { TrailingNode } from 'reactjs-tiptap-editor/trailingnode'; // [!code ++]
+import { TrailingNode } from '@remarkablejames/rich-text-editor/trailingnode'; // [!code ++]
 
 const extensions = [
   ...,

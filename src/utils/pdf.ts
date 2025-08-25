@@ -1,59 +1,85 @@
-import type { Editor } from '@tiptap/core';
-import { ExportPdfOptions } from '@/extensions/ExportPdf';
+import type { Editor } from "@tiptap/core";
 
-function printHtml(content: string, exportPdfOptions: ExportPdfOptions) {
-  const iframe: HTMLIFrameElement = document.createElement('iframe');
+import type { ExportPdfOptions } from "@/extensions/ExportPdf";
+
+function printHtml(
+  content: string,
+  exportPdfOptions: Partial<ExportPdfOptions>
+) {
+  const iframe: HTMLIFrameElement = document.createElement("iframe");
   iframe.setAttribute(
-    'style',
-    'position: absolute; width: 0; height: 0; top: 0; left: 0;'
+    "style",
+    "position: absolute; width: 0; height: 0; top: 0; left: 0;"
   );
   document.body.appendChild(iframe);
 
-  const doc = iframe.contentDocument || iframe.contentWindow?.document;
-
+  const doc = iframe.contentDocument;
   if (!doc) return;
-
-  const {
-    paperSize,
-    margins: {
-      top: marginTop,
-      right: marginRight,
-      bottom: marginBottom,
-      left: marginLeft,
-    },
-  } = exportPdfOptions;
 
   const html = `
     <!DOCTYPE html>
-    <html lang="en">
+    <html>
     <head>
-      <title>Echo Editor</title>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <style>
-        @media print {
-          @page {
-            size: ${paperSize};
-            margin: ${marginTop} ${marginRight} ${marginBottom} ${marginLeft}; /* top, right, bottom, left */
-          }
+        @page {
+          size: ${exportPdfOptions.paperSize || "A4"};
+          margin: ${exportPdfOptions.margins?.top || "1in"} ${
+    exportPdfOptions.margins?.right || "0.4in"
+  } ${exportPdfOptions.margins?.bottom || "1in"} ${
+    exportPdfOptions.margins?.left || "0.4in"
+  };
+        }
 
-          body {
-            background: none;
-            margin: 0;
-            padding: 0;
-          }
+        * {
+          box-sizing: border-box;
+        }
 
-          .print-container {
-            width: 100%;
-            box-sizing: border-box;
-          }
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+          background: white;
+        }
 
-          .no-print {
-            display: none;
-          }
+        .print-container {
+          max-width: 100%;
+          width: 100%;
+          margin: 0 auto;
+          padding: 0;
+          background: white;
+        }
+
+        .print-container * {
+          color: black !important;
+          background: transparent !important;
+          text-shadow: none !important;
+          box-shadow: none !important;
+        }
+
+        .print-container a:after {
+          content: ' (' attr(href) ')';
+          font-size: 90%;
+        }
+
+        .print-container img {
+          max-width: 100% !important;
+          height: auto !important;
+          page-break-inside: avoid;
+        }
+
+        .print-container table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        .print-container th, .print-container td {
+          border: 1px solid #ddd;
+          padding: 8px;
+          text-align: left;
         }
       </style>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reactjs-tiptap-editor@latest/lib/style.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@remarkablejames/rich-text-editor@latest/lib/style.css">
     </head>
     <body>
       <div class="print-container">
@@ -67,29 +93,37 @@ function printHtml(content: string, exportPdfOptions: ExportPdfOptions) {
   doc.write(html);
   doc.close();
 
-  iframe.addEventListener('load', () => {
+  iframe.addEventListener("load", () => {
     setTimeout(() => {
       try {
         iframe.contentWindow?.focus();
         iframe.contentWindow?.print();
       } catch (err) {
-        console.error('Print failed', err);
+        console.error("Print failed", err);
       }
       setTimeout(() => {
         document.body.removeChild(iframe);
-      }, 100);
-    }, 50);
+      }, 1000);
+    }, 100);
   });
 }
 
-export function printEditorContent(
+export function exportToPdf(
   editor: Editor,
-  exportPdfOptions: ExportPdfOptions
+  options: Partial<ExportPdfOptions> = {}
 ) {
   const content = editor.getHTML();
-  if (content) {
-    printHtml(content, exportPdfOptions);
-    return true;
-  }
-  return false;
+  const defaultOptions: ExportPdfOptions = {
+    paperSize: "A4",
+    margins: {
+      top: "1in",
+      right: "0.4in",
+      bottom: "1in",
+      left: "0.4in",
+    },
+    divider: false,
+    spacer: false,
+    button: () => ({}),
+  };
+  printHtml(content, { ...defaultOptions, ...options });
 }

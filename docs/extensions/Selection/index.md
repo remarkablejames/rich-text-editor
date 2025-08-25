@@ -13,7 +13,7 @@ The Selection extension allows you to add a selection to your editor.
 ## Usage
 
 ```tsx
-import { Selection } from 'reactjs-tiptap-editor/selection'; // [!code ++]
+import { Selection } from '@remarkablejames/rich-text-editor/selection'; // [!code ++]
 
 const extensions = [
   ...,

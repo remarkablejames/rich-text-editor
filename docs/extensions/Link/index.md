@@ -15,7 +15,7 @@ next:
 ## Usage
 
 ```tsx
-import { Link } from 'reactjs-tiptap-editor/link'; // [!code ++]
+import { Link } from '@remarkablejames/rich-text-editor/link'; // [!code ++]
 
 const extensions = [
   ...,

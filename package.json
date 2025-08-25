@@ -1,5 +1,5 @@
 {
-  "name": "reactjs-tiptap-editor",
+  "name": "@remarkablejames/rich-text-editor",
   "type": "module",
   "version": "0.3.18",
   "packageManager": "pnpm@8.15.9",

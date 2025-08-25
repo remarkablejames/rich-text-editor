@@ -378,15 +378,15 @@ importers:
 
   playground:
     dependencies:
+      '@remarkablejames/rich-text-editor':
+        specifier: workspace:*
+        version: link:..
       react:
         specifier: ^19.1.0
         version: 19.1.0
       react-dom:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
-      reactjs-tiptap-editor:
-        specifier: workspace:*
-        version: link:..
     devDependencies:
       '@types/node':
         specifier: ^22.14.0

@@ -13,7 +13,7 @@ next:
 ## Usage
 
 ```tsx
-import { SearchAndReplace } from 'reactjs-tiptap-editor/searchandreplace'; // [!code ++]
+import { SearchAndReplace } from '@remarkablejames/rich-text-editor/searchandreplace'; // [!code ++]
 
 const extensions = [
   ...,

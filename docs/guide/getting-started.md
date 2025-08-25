@@ -1,5 +1,5 @@
 ---
-description: How to install reactjs-tiptap-editor
+description: How to install @remarkablejames/rich-text-editor
 
 next:
   text: Toolbar
@@ -11,15 +11,15 @@ next:
 ::: code-group
 
 ```sh [npm]
-npm install reactjs-tiptap-editor@latest
+npm install @remarkablejames/rich-text-editor@latest
 ```
 
 ```sh [pnpm]
-pnpm install reactjs-tiptap-editor@latest
+pnpm install @remarkablejames/rich-text-editor@latest
 ```
 
 ```sh [yarn]
-yarn add reactjs-tiptap-editor@latest
+yarn add @remarkablejames/rich-text-editor@latest
 ```
 
 :::
@@ -29,30 +29,30 @@ yarn add reactjs-tiptap-editor@latest
 ::: code-group
 
 ```sh [npm]
-npm install reactjs-tiptap-editor@0.1.16
+npm install @remarkablejames/rich-text-editor@0.1.16
 ```
-```
+
+````
 
 ```sh [pnpm]
-pnpm install reactjs-tiptap-editor@0.1.16
-```
+pnpm install @remarkablejames/rich-text-editor@0.1.16
+````
 
 ```sh [yarn]
-yarn add reactjs-tiptap-editor@0.1.16
+yarn add @remarkablejames/rich-text-editor@0.1.16
 ```
 
 :::
 
-
 ## Usage
 
 ```tsx
-import RichTextEditor from 'reactjs-tiptap-editor';
-import { BaseKit } from 'reactjs-tiptap-editor';
-// import { BaseKit } from 'reactjs-tiptap-editor/extension-bundle'; // for version 0.1.16 and lower
+import RichTextEditor from '@remarkablejames/rich-text-editor';
+import { BaseKit } from '@remarkablejames/rich-text-editor';
+// import { BaseKit } from '@remarkablejames/rich-text-editor/extension-bundle'; // for version 0.1.16 and lower
 
 // Import CSS
-import 'reactjs-tiptap-editor/style.css';
+import '@remarkablejames/rich-text-editor/style.css';
 
 const extensions = [
   BaseKit.configure({
@@ -98,44 +98,44 @@ const App = () => {
  */
 export interface RichTextEditorProps {
   /** Content of the editor */
-  content: string
+  content: string;
   /** Extensions for the editor */
-  extensions: AnyExtension[]
+  extensions: AnyExtension[];
 
   /** Output format */
-  output: 'html' | 'json' | 'text'
+  output: "html" | "json" | "text";
   /** Model value */
-  modelValue?: string | object
+  modelValue?: string | object;
   /** Dark mode flag */
-  dark?: boolean
+  dark?: boolean;
   /** Dense mode flag */
-  dense?: boolean
+  dense?: boolean;
   /** Disabled flag */
-  disabled?: boolean
+  disabled?: boolean;
   /** Label for the editor */
-  label?: string
+  label?: string;
   /** Hide toolbar flag */
-  hideToolbar?: boolean
+  hideToolbar?: boolean;
   /** Disable bubble menu flag */
-  disableBubble?: boolean
+  disableBubble?: boolean;
   /** Hide bubble menu flag */
-  hideBubble?: boolean
+  hideBubble?: boolean;
   /** Remove default wrapper flag */
-  removeDefaultWrapper?: boolean
+  removeDefaultWrapper?: boolean;
   /** Maximum width */
-  maxWidth?: string | number
+  maxWidth?: string | number;
   /** Minimum height */
-  minHeight?: string | number
+  minHeight?: string | number;
   /** Maximum height */
-  maxHeight?: string | number
+  maxHeight?: string | number;
   /** Content class */
-  contentClass?: string | string[] | Record<string, any>
+  contentClass?: string | string[] | Record<string, any>;
   /** Content change callback */
-  onChangeContent?: (val: any) => void
+  onChangeContent?: (val: any) => void;
   /** Bubble menu props */
-  bubbleMenu?: BubbleMenuProps
+  bubbleMenu?: BubbleMenuProps;
 
   /** Use editor options */
-  useEditorOptions?: UseEditorOptions
+  useEditorOptions?: UseEditorOptions;
 }
 ```

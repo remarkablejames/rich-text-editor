@@ -1,5 +1,5 @@
 export const RESET_CSS = `
-.reactjs-tiptap-editor,
+.remarkablejames-rich-text-editor,
 .richtext-dialog-content {
   button,
   input:where([type=button]),

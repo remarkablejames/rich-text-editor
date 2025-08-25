@@ -15,7 +15,7 @@ Mermaid is a node extension that allows you to add an Mermaid to your editor.
 ## Usage
 
 ```tsx
-import { Mermaid } from 'reactjs-tiptap-editor/mermaid'; // [!code ++]
+import { Mermaid } from '@remarkablejames/rich-text-editor/mermaid'; // [!code ++]
 
 const extensions = [
   ...,
@@ -31,7 +31,7 @@ const extensions = [
 ## Configuration bubble menu
 
 ```tsx
-import { BubbleMenuMermaid } from 'reactjs-tiptap-editor/bubble-extra'; // [!code ++]
+import { BubbleMenuMermaid } from '@remarkablejames/rich-text-editor/bubble-extra'; // [!code ++]
 
 const App = () => {
 

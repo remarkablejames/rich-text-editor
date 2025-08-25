@@ -15,7 +15,7 @@ Mention is a node extension that allows you to add a Mention to your editor.
 ## Usage
 
 ```tsx
-import { Mention } from 'reactjs-tiptap-editor/mention'; // [!code ++]
+import { Mention } from '@remarkablejames/rich-text-editor/mention'; // [!code ++]
 
 const extensions = [
   ...,

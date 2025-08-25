@@ -15,7 +15,7 @@ The Code extension allows you to add code to your editor.
 ## Usage
 
 ```tsx
-import { Code } from 'reactjs-tiptap-editor/code'; // [!code ++]
+import { Code } from '@remarkablejames/rich-text-editor/code'; // [!code ++]
 
 const extensions = [
   ...,

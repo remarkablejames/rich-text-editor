@@ -11,7 +11,7 @@ Drawer is a node extension that allows you to add an Drawer to your editor.
 ## Usage
 
 ```tsx
-import { Drawer } from 'reactjs-tiptap-editor/drawer'; // [!code ++]
+import { Drawer } from '@remarkablejames/rich-text-editor/drawer'; // [!code ++]
 import 'easydrawer/styles.css'; // [!code ++]
 
 const extensions = [
@@ -28,7 +28,7 @@ const extensions = [
 ## Configuration bubble menu
 
 ```tsx
-import { BubbleMenuDrawer } from 'reactjs-tiptap-editor/bubble-extra'; // [!code ++]
+import { BubbleMenuDrawer } from '@remarkablejames/rich-text-editor/bubble-extra'; // [!code ++]
 
 const App = () => {
 
