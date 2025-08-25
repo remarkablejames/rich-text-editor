@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import '../styles/index.scss';
 
@@ -22,7 +22,7 @@ export interface RichTextRendererProps {
  */
 export const RichTextRenderer: React.FC<RichTextRendererProps> = ({
   content,
-  className = "",
+  className = '',
   dark = false,
   style,
 }) => {
@@ -30,8 +30,8 @@ export const RichTextRenderer: React.FC<RichTextRendererProps> = ({
     fontFamily:
       '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
     lineHeight: 1.6,
-    color: dark ? "#e2e8f0" : "#1a202c",
-    backgroundColor: dark ? "#1a202c" : "#ffffff",
+    color: dark ? '#e2e8f0' : '#1a202c',
+    backgroundColor: dark ? '#1a202c' : '#ffffff',
     ...style,
   };
 
@@ -57,10 +57,10 @@ export const RichTextRenderer: React.FC<RichTextRendererProps> = ({
       .richtext-renderer h4:last-child, .richtext-renderer h5:last-child, .richtext-renderer h6:last-child { margin-bottom: 0; }
 
       .richtext-renderer a.link { color: ${
-        dark ? "#60a5fa" : "#3b82f6"
+        dark ? '#60a5fa' : '#3b82f6'
       }; font-weight: 800; text-decoration: underline; }
       .richtext-renderer a.link:hover { color: ${
-        dark ? "#93c5fd" : "#2563eb"
+        dark ? '#93c5fd' : '#2563eb'
       }; }
 
       .richtext-renderer strong { font-weight: 700; }
@@ -68,25 +68,25 @@ export const RichTextRenderer: React.FC<RichTextRendererProps> = ({
       .richtext-renderer u { text-decoration: underline; }
       .richtext-renderer s { text-decoration: line-through; }
       .richtext-renderer mark { background-color: ${
-        dark ? "#dc2626" : "#ef4444"
+        dark ? '#dc2626' : '#ef4444'
       }; color: inherit; border-radius: 0.125rem; padding: 0.25rem 0; }
 
       .richtext-renderer code { background-color: #374151; color: #ffffff; border-radius: 0.125rem; padding: 0.125rem 0.25rem; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; font-size: 0.875em; }
       .richtext-renderer pre { background-color: ${
-        dark ? "#111827" : "#4b5563"
+        dark ? '#111827' : '#4b5563'
       }; color: #ffffff; border-radius: 0.375rem; margin: 3rem 0; padding: 1rem; border: 1px solid ${
-    dark ? "#374151" : "#000000"
-  }; overflow-x: auto; }
+        dark ? '#374151' : '#000000'
+      }; overflow-x: auto; }
       .richtext-renderer pre:first-child { margin-top: 0; }
       .richtext-renderer pre:last-child { margin-bottom: 0; }
       .richtext-renderer pre code { background-color: inherit; color: inherit; padding: 0; }
 
       .richtext-renderer .blockquote, .richtext-renderer blockquote {
-        border-left: 4px solid ${dark ? "#d1d5db" : "#4b5563"};
-        color: ${dark ? "#ffffff" : "#000000"};
+        border-left: 4px solid ${dark ? '#d1d5db' : '#4b5563'};
+        color: ${dark ? '#ffffff' : '#000000'};
         padding: 0.5rem 1rem;
         background-color: ${
-          dark ? "rgba(255, 255, 255, 0.05)" : "rgba(0, 0, 0, 0.05)"
+          dark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)'
         };
         border-radius: 0.5rem;
         border-top-left-radius: 0;
@@ -114,23 +114,23 @@ export const RichTextRenderer: React.FC<RichTextRendererProps> = ({
       .richtext-renderer img { height: auto; max-width: 100%; border-radius: 0.375rem; }
 
       .richtext-renderer iframe { border: 1px solid ${
-        dark ? "#374151" : "#e5e7eb"
+        dark ? '#374151' : '#e5e7eb'
       }; width: 100%; margin-top: 0.5rem; border-radius: 0.125rem; height: 100%; }
 
       .richtext-renderer [data-type="horizontalRule"] { margin: 2rem 0; padding: 1rem 0; }
       .richtext-renderer [data-type="horizontalRule"] hr {
         border: 0;
         border-top: 1px solid ${
-          dark ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.2)"
+          dark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'
         };
         background-color: ${
-          dark ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.8)"
+          dark ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.8)'
         };
       }
 
       .richtext-renderer table {
         border: 1px solid ${
-          dark ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.1)"
+          dark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)'
         };
         border-collapse: collapse;
         table-layout: fixed;
@@ -145,7 +145,7 @@ export const RichTextRenderer: React.FC<RichTextRendererProps> = ({
       .richtext-renderer table:last-child { margin-bottom: 0; }
       .richtext-renderer table td, .richtext-renderer table th {
         border: 1px solid ${
-          dark ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.1)"
+          dark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)'
         };
         min-width: 1em;
         padding: 0.5rem;
@@ -179,7 +179,7 @@ export const RichTextRenderer: React.FC<RichTextRendererProps> = ({
 
   return (
     <div
-      className={`richtext-renderer ${dark ? "dark" : ""} ${className}`}
+      className={`richtext-renderer ${dark ? 'dark' : ''} ${className}`}
       style={baseStyles}
       dangerouslySetInnerHTML={{ __html: rendererStyles + content }}
     />

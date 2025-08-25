@@ -5,27 +5,27 @@ import {
   useImperativeHandle,
   useLayoutEffect,
   useMemo,
-} from "react";
-import type { ComponentType } from "react";
+} from 'react';
+import type { ComponentType } from 'react';
 
-import type { AnyExtension, Editor as CoreEditor } from "@tiptap/core";
-import type { UseEditorOptions } from "@tiptap/react";
-import { EditorContent, useEditor } from "@tiptap/react";
-import { differenceBy, throttle } from "lodash-es";
+import type { AnyExtension, Editor as CoreEditor } from '@tiptap/core';
+import type { UseEditorOptions } from '@tiptap/react';
+import { EditorContent, useEditor } from '@tiptap/react';
+import { differenceBy, throttle } from 'lodash-es';
 
-import { BubbleMenu, Toolbar, TooltipProvider } from "@/components";
-import CharactorCount from "@/components/CharactorCount";
-import { Toaster } from "@/components/ui/toaster";
-import { EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from "@/constants";
-import { RESET_CSS } from "@/constants/resetCSS";
-import { editableEditorActions } from "@/store/editableEditor";
-import { ProviderRichText } from "@/store/ProviderRichText";
-import { themeActions } from "@/theme/theme";
-import type { BubbleMenuProps, ToolbarProps } from "@/types";
-import { removeCSS, updateCSS } from "@/utils/dynamicCSS";
-import { hasExtension } from "@/utils/utils";
+import { BubbleMenu, Toolbar, TooltipProvider } from '@/components';
+import CharactorCount from '@/components/CharactorCount';
+import { Toaster } from '@/components/ui/toaster';
+import { EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants';
+import { RESET_CSS } from '@/constants/resetCSS';
+import { editableEditorActions } from '@/store/editableEditor';
+import { ProviderRichText } from '@/store/ProviderRichText';
+import { themeActions } from '@/theme/theme';
+import type { BubbleMenuProps, ToolbarProps } from '@/types';
+import { removeCSS, updateCSS } from '@/utils/dynamicCSS';
+import { hasExtension } from '@/utils/utils';
 
-import "../styles/index.scss";
+import '../styles/index.scss';
 
 /**
  * Interface for RichTextEditor component props
@@ -37,7 +37,7 @@ export interface RichTextEditorProps {
   extensions: AnyExtension[];
 
   /** Output format */
-  output: "html" | "json" | "text";
+  output: 'html' | 'json' | 'text';
   /** Model value */
   modelValue?: string | object;
   /** Dark mode flag */
@@ -90,7 +90,7 @@ function RichTextEditor(
   const id = useId();
 
   const sortExtensions = useMemo(() => {
-    const diff = differenceBy(extensions, extensions, "name");
+    const diff = differenceBy(extensions, extensions, 'name');
     const exts = extensions.map((k: any) => {
       const find = extensions.find((ext: any) => ext.name === k.name);
       if (!find) {
@@ -124,8 +124,8 @@ function RichTextEditor(
   });
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", props.dark);
-    themeActions.setTheme(id, props.dark ? "dark" : "light");
+    document.documentElement.classList.toggle('dark', props.dark);
+    themeActions.setTheme(id, props.dark ? 'dark' : 'light');
   }, [props.dark]);
 
   useEffect(() => {
@@ -135,41 +135,41 @@ function RichTextEditor(
 
   useEffect(() => {
     if (props?.resetCSS !== false) {
-      updateCSS(RESET_CSS, "react-tiptap-reset");
+      updateCSS(RESET_CSS, 'react-tiptap-reset');
     }
 
     return () => {
-      removeCSS("react-tiptap-reset");
+      removeCSS('react-tiptap-reset');
     };
   }, [props?.resetCSS]);
 
   function getOutput(
     editor: CoreEditor,
-    output: RichTextEditorProps["output"]
+    output: RichTextEditorProps['output']
   ) {
     if (props?.removeDefaultWrapper) {
-      if (output === "html") {
-        return editor.isEmpty ? "" : editor.getHTML();
+      if (output === 'html') {
+        return editor.isEmpty ? '' : editor.getHTML();
       }
-      if (output === "json") {
+      if (output === 'json') {
         return editor.isEmpty ? {} : editor.getJSON();
       }
-      if (output === "text") {
-        return editor.isEmpty ? "" : editor.getText();
+      if (output === 'text') {
+        return editor.isEmpty ? '' : editor.getText();
       }
-      return "";
+      return '';
     }
 
-    if (output === "html") {
+    if (output === 'html') {
       return editor.getHTML();
     }
-    if (output === "json") {
+    if (output === 'json') {
       return editor.getJSON();
     }
-    if (output === "text") {
+    if (output === 'text') {
       return editor.getText();
     }
-    return "";
+    return '';
   }
 
   useLayoutEffect(() => {
@@ -182,7 +182,7 @@ function RichTextEditor(
     };
   }, []);
 
-  const hasExtensionValue = hasExtension(editor, "characterCount");
+  const hasExtensionValue = hasExtension(editor, 'characterCount');
 
   if (!editor) {
     return <></>;
@@ -203,7 +203,7 @@ function RichTextEditor(
               )}
 
               <EditorContent
-                className={`richtext-relative ${props?.contentClass || ""}`}
+                className={`richtext-relative ${props?.contentClass || ''}`}
                 editor={editor}
               />
 
