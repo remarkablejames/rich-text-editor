@@ -1,85 +1,96 @@
-import { forwardRef, useEffect, useId, useImperativeHandle, useLayoutEffect, useMemo } from 'react';
+import {
+  forwardRef,
+  useEffect,
+  useId,
+  useImperativeHandle,
+  useLayoutEffect,
+  useMemo,
+} from "react";
+import type { ComponentType, ReactElement } from "react";
 
-import type { AnyExtension, Editor as CoreEditor } from '@tiptap/core';
-import type { UseEditorOptions } from '@tiptap/react';
-import { EditorContent, useEditor } from '@tiptap/react';
-import { differenceBy, throttle } from 'lodash-es';
+import type { AnyExtension, Editor as CoreEditor } from "@tiptap/core";
+import type { UseEditorOptions } from "@tiptap/react";
+import { EditorContent, useEditor } from "@tiptap/react";
+import { differenceBy, throttle } from "lodash-es";
 
-import { BubbleMenu, Toolbar, TooltipProvider } from '@/components';
-import CharactorCount from '@/components/CharactorCount';
-import { Toaster } from '@/components/ui/toaster';
-import { EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants';
-import { RESET_CSS } from '@/constants/resetCSS';
-import { editableEditorActions } from '@/store/editableEditor';
-import { ProviderRichText } from '@/store/ProviderRichText';
-import { themeActions } from '@/theme/theme';
-import type { BubbleMenuProps, ToolbarProps } from '@/types';
-import { removeCSS, updateCSS } from '@/utils/dynamicCSS';
-import { hasExtension } from '@/utils/utils';
+import { BubbleMenu, Toolbar, TooltipProvider } from "@/components";
+import CharactorCount from "@/components/CharactorCount";
+import { Toaster } from "@/components/ui/toaster";
+import { EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from "@/constants";
+import { RESET_CSS } from "@/constants/resetCSS";
+import { editableEditorActions } from "@/store/editableEditor";
+import { ProviderRichText } from "@/store/ProviderRichText";
+import { themeActions } from "@/theme/theme";
+import type { BubbleMenuProps, ToolbarProps } from "@/types";
+import { removeCSS, updateCSS } from "@/utils/dynamicCSS";
+import { hasExtension } from "@/utils/utils";
 
-import '../styles/index.scss';
+import "../styles/index.scss";
 
 /**
  * Interface for RichTextEditor component props
  */
 export interface RichTextEditorProps {
   /** Content of the editor */
-  content: string
+  content: string;
   /** Extensions for the editor */
-  extensions: AnyExtension[]
+  extensions: AnyExtension[];
 
   /** Output format */
-  output: 'html' | 'json' | 'text'
+  output: "html" | "json" | "text";
   /** Model value */
-  modelValue?: string | object
+  modelValue?: string | object;
   /** Dark mode flag */
-  dark?: boolean
+  dark?: boolean;
   /** Dense mode flag */
-  dense?: boolean
+  dense?: boolean;
   /** Disabled flag */
-  disabled?: boolean
+  disabled?: boolean;
   /** Label for the editor */
-  label?: string
+  label?: string;
   /** Hide toolbar flag */
-  hideToolbar?: boolean
+  hideToolbar?: boolean;
   /** Disable bubble menu flag */
-  disableBubble?: boolean
+  disableBubble?: boolean;
   /** Hide bubble menu flag */
-  hideBubble?: boolean
+  hideBubble?: boolean;
   /** Remove default wrapper flag */
-  removeDefaultWrapper?: boolean
+  removeDefaultWrapper?: boolean;
   /** Maximum width */
-  maxWidth?: string | number
+  maxWidth?: string | number;
   /** Minimum height */
-  minHeight?: string | number
+  minHeight?: string | number;
   /** Maximum height */
-  maxHeight?: string | number
+  maxHeight?: string | number;
   /** Content class */
-  contentClass?: string | string[] | Record<string, any>
+  contentClass?: string | string[] | Record<string, any>;
   /** Content change callback */
-  onChangeContent?: (val: any) => void
+  onChangeContent?: (val: any) => void;
   /** Bubble menu props */
-  bubbleMenu?: BubbleMenuProps
+  bubbleMenu?: BubbleMenuProps;
   /** Toolbar props */
-  toolbar?: ToolbarProps
+  toolbar?: ToolbarProps;
 
   /** Use editor options */
-  useEditorOptions?: UseEditorOptions
+  useEditorOptions?: UseEditorOptions;
 
   /** Use editor options */
-  resetCSS?: boolean
+  resetCSS?: boolean;
 
   /** This option gives us the control to enable the default behavior of rendering the editor immediately.*/
-  immediatelyRender?: boolean
+  immediatelyRender?: boolean;
 }
 
-function RichTextEditor(props: RichTextEditorProps, ref: React.ForwardedRef<{ editor: CoreEditor | null }>) {
+function RichTextEditor(
+  props: RichTextEditorProps,
+  ref: React.ForwardedRef<{ editor: CoreEditor | null }>
+) {
   const { content, extensions, useEditorOptions = {} } = props;
 
   const id = useId();
 
   const sortExtensions = useMemo(() => {
-    const diff = differenceBy(extensions, extensions, 'name');
+    const diff = differenceBy(extensions, extensions, "name");
     const exts = extensions.map((k: any) => {
       const find = extensions.find((ext: any) => ext.name === k.name);
       if (!find) {
@@ -101,8 +112,7 @@ function RichTextEditor(props: RichTextEditorProps, ref: React.ForwardedRef<{ ed
     content,
     immediatelyRender: props?.immediatelyRender || false,
     onUpdate: ({ editor }) => {
-      if (onValueChange)
-        onValueChange(editor);
+      if (onValueChange) onValueChange(editor);
     },
     ...useEditorOptions,
   }) as any;
@@ -114,8 +124,8 @@ function RichTextEditor(props: RichTextEditorProps, ref: React.ForwardedRef<{ ed
   });
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', props.dark);
-    themeActions.setTheme(id, props.dark ? 'dark' : 'light');
+    document.documentElement.classList.toggle("dark", props.dark);
+    themeActions.setTheme(id, props.dark ? "dark" : "light");
   }, [props.dark]);
 
   useEffect(() => {
@@ -125,38 +135,41 @@ function RichTextEditor(props: RichTextEditorProps, ref: React.ForwardedRef<{ ed
 
   useEffect(() => {
     if (props?.resetCSS !== false) {
-      updateCSS(RESET_CSS, 'react-tiptap-reset');
+      updateCSS(RESET_CSS, "react-tiptap-reset");
     }
 
     return () => {
-      removeCSS('react-tiptap-reset');
+      removeCSS("react-tiptap-reset");
     };
   }, [props?.resetCSS]);
 
-  function getOutput(editor: CoreEditor, output: RichTextEditorProps['output']) {
+  function getOutput(
+    editor: CoreEditor,
+    output: RichTextEditorProps["output"]
+  ) {
     if (props?.removeDefaultWrapper) {
-      if (output === 'html') {
-        return editor.isEmpty ? '' : editor.getHTML();
+      if (output === "html") {
+        return editor.isEmpty ? "" : editor.getHTML();
       }
-      if (output === 'json') {
+      if (output === "json") {
         return editor.isEmpty ? {} : editor.getJSON();
       }
-      if (output === 'text') {
-        return editor.isEmpty ? '' : editor.getText();
+      if (output === "text") {
+        return editor.isEmpty ? "" : editor.getText();
       }
-      return '';
+      return "";
     }
 
-    if (output === 'html') {
+    if (output === "html") {
       return editor.getHTML();
     }
-    if (output === 'json') {
+    if (output === "json") {
       return editor.getJSON();
     }
-    if (output === 'text') {
+    if (output === "text") {
       return editor.getText();
     }
-    return '';
+    return "";
   }
 
   useLayoutEffect(() => {
@@ -169,7 +182,7 @@ function RichTextEditor(props: RichTextEditorProps, ref: React.ForwardedRef<{ ed
     };
   }, []);
 
-  const hasExtensionValue = hasExtension(editor, 'characterCount');
+  const hasExtensionValue = hasExtension(editor, "characterCount");
 
   if (!editor) {
     return <></>;
@@ -177,32 +190,34 @@ function RichTextEditor(props: RichTextEditorProps, ref: React.ForwardedRef<{ ed
 
   return (
     <div className="reactjs-tiptap-editor">
-      <ProviderRichText
-        id={id}
-      >
-        <TooltipProvider delayDuration={0}
-          disableHoverableContent
-        >
+      <ProviderRichText id={id}>
+        <TooltipProvider delayDuration={0} disableHoverableContent>
           <div className="richtext-overflow-hidden richtext-rounded-[0.5rem] richtext-bg-background richtext-shadow richtext-outline richtext-outline-1">
             <div className="richtext-flex richtext-max-h-full richtext-w-full richtext-flex-col">
-              {!props?.hideToolbar && <Toolbar disabled={!!props?.disabled}
-                editor={editor}
-                toolbar={props.toolbar}
-              />}
+              {!props?.hideToolbar && (
+                <Toolbar
+                  disabled={!!props?.disabled}
+                  editor={editor}
+                  toolbar={props.toolbar}
+                />
+              )}
 
-              <EditorContent className={`richtext-relative ${props?.contentClass || ''}`}
+              <EditorContent
+                className={`richtext-relative ${props?.contentClass || ""}`}
                 editor={editor}
-
               />
 
-              {hasExtensionValue && <CharactorCount editor={editor}
-                extensions={extensions}
-              />}
+              {hasExtensionValue && (
+                <CharactorCount editor={editor} extensions={extensions} />
+              )}
 
-              {!props?.hideBubble && <BubbleMenu bubbleMenu={props?.bubbleMenu}
-                disabled={props?.disabled}
-                editor={editor}
-              />}
+              {!props?.hideBubble && (
+                <BubbleMenu
+                  bubbleMenu={props?.bubbleMenu}
+                  disabled={props?.disabled}
+                  editor={editor}
+                />
+              )}
             </div>
           </div>
         </TooltipProvider>
@@ -213,4 +228,9 @@ function RichTextEditor(props: RichTextEditorProps, ref: React.ForwardedRef<{ ed
   );
 }
 
-export default forwardRef(RichTextEditor);
+const RichTextEditorWithRef = forwardRef(RichTextEditor);
+
+// Type assertion to fix React 19 compatibility
+export default RichTextEditorWithRef as ComponentType<
+  RichTextEditorProps & React.RefAttributes<{ editor: CoreEditor | null }>
+>;
