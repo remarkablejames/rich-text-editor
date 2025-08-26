@@ -125,7 +125,7 @@ function RichTextRenderEngine(
     <div className="reactjs-tiptap-render-engine" style={containerStyle}>
       <ProviderRichText id={id}>
         <TooltipProvider delayDuration={0} disableHoverableContent>
-          <div className="richtext-overflow-hidden richtext-w-full richtext-border richtext-rounded-md richtext-bg-background">
+          <div className="richtext-overflow-hidden richtext-w-full richtext-bg-background">
             <div className="richtext-flex richtext-max-h-full richtext-w-full richtext-flex-col">
               <EditorContent
                 className={`richtext-relative richtext-read-only ${
