@@ -28,11 +28,11 @@ export interface TableOptions extends GeneralOptions<TableOptions> {
 }
 
 export const Table = /* @__PURE__ */ TiptapTable.extend<TableOptions>({
-    addOptions() {
-        return {
-            ...this.parent?.(),
-            HTMLAttributes: {
-                style: `
+  addOptions() {
+    return {
+      ...this.parent?.(),
+      HTMLAttributes: {
+        style: `
           border: 1px solid #d1d5db;         
         border-collapse: collapse;     
         table-layout: fixed;
