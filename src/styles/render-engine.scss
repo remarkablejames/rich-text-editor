@@ -17,21 +17,213 @@
       display: none;
     }
 
-    // Disable image interactions
-    .image-view {
-      .image-view__body {
-        &:hover {
-          outline-color: transparent;
-          .image-view__body__button-wrap {
-            display: none;
-          }
+    // Table wrapper styles - crucial for proper table rendering
+    .tableWrapper {
+      margin: 1em 0;
+      @apply richtext-overflow-x-auto;
+
+      table {
+        overflow: hidden;
+        display: table;
+        width: 100%;
+
+        // Ensure table cells have proper borders and padding
+        td, th {
+          @apply richtext-border richtext-border-black/10 richtext-min-w-[1em] richtext-p-2;
+          @apply dark:richtext-border-white/20;
         }
       }
     }
 
-    // Hide image resizers
+    // Image view styles for proper layout and alignment
+    .image-view {
+      display: inline-block;
+      float: none;
+      max-width: 100%;
+      line-height: 0;
+      vertical-align: baseline;
+      user-select: none;
+
+      &__body {
+        position: relative;
+        display: inline-block;
+        max-width: 100%;
+        clear: both;
+        outline: transparent solid 2px;
+        transition: all 0.2s ease-in;
+
+        &__button-wrap {
+          display: none !important; // Always hide in render mode
+        }
+
+        &:hover {
+          outline-color: transparent;
+        }
+
+        &__placeholder {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          width: 100%;
+          height: 100%;
+        }
+
+        &__image {
+          margin: 0;
+          cursor: default !important; // No pointer cursor in render mode
+          max-width: 100%;
+          height: auto;
+        }
+      }
+
+      img {
+        display: inline;
+        vertical-align: baseline;
+        max-width: 100%;
+        height: auto;
+      }
+
+      // Handle inline float images
+      &[style*="float: left"] {
+        float: left !important;
+        margin: 1em 1em 1em 0 !important;
+      }
+
+      &[style*="float: right"] {
+        float: right !important;
+        margin: 1em 0 1em 1em !important;
+      }
+    }
+
+    // Hide image resizers completely in render mode
     .image-resizer {
       display: none !important;
+    }
+
+    // Image alignment styles
+    div.image {
+      &[style*="text-align: left"] {
+        text-align: left;
+      }
+      &[style*="text-align: center"] {
+        text-align: center;
+      }
+      &[style*="text-align: right"] {
+        text-align: right;
+      }
+    }
+
+    // Inline image float styles
+    span.image {
+      &[style*="float: left"] {
+        float: left;
+        margin: 1em 1em 1em 0;
+
+        img {
+          float: left;
+        }
+      }
+      &[style*="float: right"] {
+        float: right;
+        margin: 1em 0 1em 1em;
+
+        img {
+          float: right;
+        }
+      }
+    }
+
+    // Ensure images respect their width attribute
+    img[width] {
+      width: attr(width px);
+    }
+
+    img[style*="width"] {
+      max-width: 100%;
+    }
+
+    // Additional table styles to ensure proper rendering
+    table {
+      @apply richtext-border-collapse richtext-table-fixed richtext-w-full;
+
+      td, th {
+        @apply richtext-box-border richtext-relative richtext-text-left richtext-align-top;
+
+        p {
+          @apply richtext-m-0;
+
+          & + p {
+            @apply richtext-mt-3;
+          }
+        }
+      }
+
+      th {
+        @apply richtext-font-bold;
+      }
+    }
+  }
+}
+
+// Ensure editor styles are also applied to render engine when using both classes
+.reactjs-tiptap-render-engine.reactjs-tiptap-editor {
+  .ProseMirror.ProseMirror.ProseMirror {
+    // Import critical editor styles for proper rendering
+    .tableWrapper {
+      margin: 1em 0;
+      @apply richtext-overflow-x-auto;
+
+      table {
+        overflow: hidden;
+        display: table;
+        width: 100%;
+      }
+    }
+
+    // Ensure image styles from editor are applied
+    .image-view {
+      $root: &;
+
+      display: inline-block;
+      float: none;
+      max-width: 100%;
+      line-height: 0;
+      vertical-align: baseline;
+      user-select: none;
+
+      &__body {
+        position: relative;
+        display: inline-block;
+        max-width: 100%;
+        clear: both;
+        outline: transparent solid 2px;
+
+        &__image {
+          margin: 0;
+          cursor: default !important;
+        }
+      }
+
+      img {
+        display: inline;
+        vertical-align: baseline;
+      }
+    }
+
+    // Override editor-specific interactive elements
+    .image-resizer,
+    .image-view__body__button-wrap {
+      display: none !important;
+    }
+
+    // Disable hover effects
+    .image-view__body:hover {
+      outline-color: transparent !important;
+    }
+
+    [data-type='horizontalRule']:hover {
+      background: transparent !important;
     }
   }
 }
