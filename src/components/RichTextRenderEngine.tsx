@@ -5,21 +5,21 @@ import {
   useImperativeHandle,
   useLayoutEffect,
   useMemo,
-} from "react";
-import type { ComponentType } from "react";
+} from 'react';
+import type { ComponentType } from 'react';
 
-import type { AnyExtension, Editor as CoreEditor } from "@tiptap/core";
-import type { UseEditorOptions } from "@tiptap/react";
-import { EditorContent, useEditor } from "@tiptap/react";
-import { differenceBy } from "lodash-es";
+import type { AnyExtension, Editor as CoreEditor } from '@tiptap/core';
+import type { UseEditorOptions } from '@tiptap/react';
+import { EditorContent, useEditor } from '@tiptap/react';
+import { differenceBy } from 'lodash-es';
 
-import { TooltipProvider } from "@/components";
-import { RESET_CSS } from "@/constants/resetCSS";
-import { ProviderRichText } from "@/store/ProviderRichText";
-import { themeActions } from "@/theme/theme";
-import { removeCSS, updateCSS } from "@/utils/dynamicCSS";
+import { TooltipProvider } from '@/components';
+import { RESET_CSS } from '@/constants/resetCSS';
+import { ProviderRichText } from '@/store/ProviderRichText';
+import { themeActions } from '@/theme/theme';
+import { removeCSS, updateCSS } from '@/utils/dynamicCSS';
 
-import "../styles/index.scss";
+import '../styles/index.scss';
 
 /**
  * Interface for RichTextRenderEngine component props
@@ -56,7 +56,7 @@ function RichTextRenderEngine(
   const id = useId();
 
   const sortExtensions = useMemo(() => {
-    const diff = differenceBy(extensions, extensions, "name");
+    const diff = differenceBy(extensions, extensions, 'name');
     const exts = extensions.map((k: any) => {
       const find = extensions.find((ext: any) => ext.name === k.name);
       if (!find) {
@@ -82,8 +82,8 @@ function RichTextRenderEngine(
   });
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", props.dark);
-    themeActions.setTheme(id, props.dark ? "dark" : "light");
+    document.documentElement.classList.toggle('dark', props.dark);
+    themeActions.setTheme(id, props.dark ? 'dark' : 'light');
   }, [props.dark]);
 
   useEffect(() => {
@@ -95,11 +95,11 @@ function RichTextRenderEngine(
 
   useEffect(() => {
     if (props?.resetCSS !== false) {
-      updateCSS(RESET_CSS, "react-tiptap-reset");
+      updateCSS(RESET_CSS, 'react-tiptap-reset');
     }
 
     return () => {
-      removeCSS("react-tiptap-reset");
+      removeCSS('react-tiptap-reset');
     };
   }, [props?.resetCSS]);
 
@@ -134,7 +134,7 @@ function RichTextRenderEngine(
             <div className="richtext-flex richtext-max-h-full richtext-w-full richtext-flex-col">
               <EditorContent
                 className={`richtext-relative richtext-read-only richtext-overflow-x-auto ${
-                  props?.contentClass || ""
+                  props?.contentClass || ''
                 }`}
                 editor={editor}
               />
