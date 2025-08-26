@@ -32,7 +32,7 @@ import '../styles/index.scss';
  */
 export interface RichTextEditorProps {
   /** Content of the editor */
-  content: string;
+  content: string | object;
   /** Extensions for the editor */
   extensions: AnyExtension[];
 

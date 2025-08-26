@@ -1,8 +1,8 @@
 const locale = {
   'editor.remove': 'Remove',
   'editor.copy': 'Copy',
-  'editor.words': 'WORDS',
-  'editor.characters': 'CHARACTERS',
+  'editor.words': 'Words',
+  'editor.characters': 'Characters',
   'editor.default': 'Default',
   'editor.recent': 'Recently Used',
   'editor.nofill': 'No Fill',

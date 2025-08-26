@@ -5,7 +5,7 @@ export const TableRow = TBRow.extend({
     return {
       ...this.parent?.(),
       HTMLAttributes: {
-        style: 'border-bottom: 1px solid #000;', /* Row borders */
+        style: 'border-bottom: 1px solid #d1d5db;', /* Row borders */
       },
     };
   },

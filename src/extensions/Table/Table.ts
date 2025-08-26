@@ -26,15 +26,16 @@ export interface TableOptions extends GeneralOptions<TableOptions> {
   /** options for table cell background */
   tableCellBackground: Partial<TableCellBackgroundOptions>
 }
+
 export const Table = /* @__PURE__ */ TiptapTable.extend<TableOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
       HTMLAttributes: {
         style: `
-          border: 1px solid #000;         
-          border-collapse: collapse;     
-          width: 100%;
+          border: 1px solid #d1d5db;         
+        border-collapse: collapse;     
+        table-layout: fixed;
         `,
       },
       resizable: true,
