@@ -6,7 +6,7 @@ export const TableCell = TBCell.extend({
       ...this.parent?.(),
       HTMLAttributes: {
         style: `
-            border-right: 1px solid #000; 
+            border-right: 1px solid #d1d5db; 
             padding: 8px 12px;            
             &:last-child {
               border-right: none;        
