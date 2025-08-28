@@ -1,6 +1,7 @@
 import type { Editor } from '@tiptap/core';
 
 import type { ExportPdfOptions } from '@/extensions/ExportPdf';
+import type { ButtonViewReturn } from '@/types';
 
 function printHtml(
   content: string,
@@ -18,7 +19,8 @@ function printHtml(
 
   const html = `
     <!DOCTYPE html>
-    <html>
+    <html
+>
     <head>
       <style>
         @page {
@@ -123,7 +125,10 @@ export function exportToPdf(
     },
     divider: false,
     spacer: false,
-    button: () => ({}),
+    button: (): ButtonViewReturn => ({
+      component: null,
+      componentProps: {},
+    }),
   };
   printHtml(content, { ...defaultOptions, ...options });
 }
