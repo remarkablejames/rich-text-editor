@@ -10,7 +10,7 @@
   .ProseMirror.ProseMirror.ProseMirror {
     @apply richtext-caret-transparent richtext-outline-0 richtext-z-0;
     min-height: auto;
-    padding: 16px 24px;
+    padding: 0 !important;
     cursor: default;
     user-select: text;
 

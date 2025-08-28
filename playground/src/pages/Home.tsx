@@ -753,7 +753,7 @@ function Home() {
 
         <div style={{ marginLeft: "auto" }}>
           <Link
-            to="/hello"
+            to="/preview"
             style={{
               padding: "8px 16px",
               backgroundColor: "#10b981",
@@ -771,7 +771,6 @@ function Home() {
         </div>
       </div>
 
-      {/* @ts-expect-error React 19 compatibility issue - component works correctly at runtime */}
       <RichTextEditor
         output="json"
         content={content}
