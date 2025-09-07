@@ -49,6 +49,7 @@ import { Drawer } from "@remarkablejames/rich-text-editor/drawer";
 import { Excalidraw } from "@remarkablejames/rich-text-editor/excalidraw";
 import { Twitter } from "@remarkablejames/rich-text-editor/twitter";
 import { Mermaid } from "@remarkablejames/rich-text-editor/mermaid";
+import { PaywallSeparator } from "@remarkablejames/rich-text-editor/paywallseparator";
 
 import "@remarkablejames/rich-text-editor/style.css";
 import "prism-code-editor-lightweight/layout.css";
@@ -130,6 +131,7 @@ const extensions = [
   }),
   Blockquote,
   SlashCommand,
+  PaywallSeparator,
   HorizontalRule,
   Code.configure({
     toolbar: false,
