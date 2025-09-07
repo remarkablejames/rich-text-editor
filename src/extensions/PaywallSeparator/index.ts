@@ -1,1 +1,1 @@
-export * from "./PaywallSeparator";
+export * from './PaywallSeparator';

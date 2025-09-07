@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { NodeViewWrapper } from "@tiptap/react";
+import { NodeViewWrapper } from '@tiptap/react';
 
 /**
  * PaywallSeparatorView - React NodeView component for the paywall separator
@@ -17,7 +17,7 @@ const PaywallSeparatorView: React.FC = () => {
           className="richtext-h-[2px] richtext-border-0 richtext-bg-gradient-to-r richtext-from-orange-400 richtext-via-red-500 richtext-to-pink-500"
           style={{
             backgroundImage:
-              "linear-gradient(90deg, #fb923c, #ef4444, #ec4899)",
+              'linear-gradient(90deg, #fb923c, #ef4444, #ec4899)',
           }}
         />
 
@@ -26,8 +26,8 @@ const PaywallSeparatorView: React.FC = () => {
           <div
             className="richtext-rounded-lg richtext-border richtext-border-orange-200 richtext-bg-white richtext-px-3 richtext-py-1 richtext-text-xs richtext-font-medium richtext-text-orange-700 richtext-shadow-sm"
             style={{
-              background: "rgba(255, 255, 255, 0.95)",
-              backdropFilter: "blur(4px)",
+              background: 'rgba(255, 255, 255, 0.95)',
+              backdropFilter: 'blur(4px)',
             }}
           >
             🔒 Paywall — Content below is premium
