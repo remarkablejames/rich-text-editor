@@ -726,6 +726,14 @@ function Home() {
     []
   );
 
+  const saveToPreview = () => {
+    localStorage.setItem(
+      "rich-text-editor-preview-content",
+      JSON.stringify(content)
+    );
+    alert("Content saved to preview!");
+  };
+
   return (
     <div
       className="p-[24px] flex flex-col w-full max-w-screen-lg gap-[24px] mx-[auto] my-0"
@@ -751,6 +759,27 @@ function Home() {
         </button>
         <button type="button" onClick={() => setDisable(!disable)}>
           {disable ? "Editable" : "Readonly"}
+        </button>
+        <button
+          type="button"
+          onClick={saveToPreview}
+          style={{
+            padding: "8px 16px",
+            backgroundColor: "#3b82f6",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            transition: "background-color 0.3s",
+          }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.backgroundColor = "#2563eb")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.backgroundColor = "#3b82f6")
+          }
+        >
+          Save to Preview
         </button>
 
         <div style={{ marginLeft: "auto" }}>

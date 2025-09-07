@@ -1,6 +1,6 @@
-import { useCallback, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-import RichTextEditor, {
+import {
   BaseKit,
   RichTextRenderEngine,
 } from "@remarkablejames/rich-text-editor";
@@ -188,729 +188,40 @@ const extensions = [
   Twitter,
 ];
 
-const DEFAULT_DOC = {
-  type: "doc",
-  content: [
-    {
-      type: "heading",
-      attrs: {
-        id: null,
-        textAlign: null,
-        indent: 0,
-        lineHeight: null,
-        dir: "auto",
-        level: 1,
-      },
-      content: [
-        {
-          type: "text",
-          text: "The quick brown fox jumped over a lazy dog",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      attrs: {
-        textAlign: null,
-        indent: 0,
-        lineHeight: null,
-        dir: "auto",
-      },
-    },
-    {
-      type: "paragraph",
-      attrs: {
-        textAlign: null,
-        indent: 0,
-        lineHeight: null,
-        dir: "auto",
-      },
-      content: [
-        {
-          type: "text",
-          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      attrs: {
-        textAlign: null,
-        indent: 0,
-        lineHeight: null,
-        dir: "auto",
-      },
-    },
-    {
-      type: "table",
-      content: [
-        {
-          type: "tableRow",
-          content: [
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          type: "tableRow",
-          content: [
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          type: "tableRow",
-          content: [
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-            {
-              type: "tableCell",
-              attrs: {
-                backgroundColor: null,
-                colspan: 1,
-                rowspan: 1,
-                colwidth: null,
-              },
-              content: [
-                {
-                  type: "paragraph",
-                  attrs: {
-                    textAlign: null,
-                    indent: 0,
-                    lineHeight: null,
-                    dir: "auto",
-                  },
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      type: "paragraph",
-      attrs: {
-        textAlign: null,
-        indent: 0,
-        lineHeight: null,
-        dir: "auto",
-      },
-    },
-    {
-      type: "paragraph",
-      attrs: {
-        textAlign: null,
-        indent: 0,
-        lineHeight: null,
-        dir: "auto",
-      },
-    },
-    {
-      type: "paragraph",
-      attrs: {
-        textAlign: null,
-        indent: 0,
-        lineHeight: null,
-        dir: "auto",
-      },
-      content: [
-        {
-          type: "image",
-          attrs: {
-            src: "https://images.theconversation.com/files/625049/original/file-20241010-15-95v3ha.jpg?ixlib=rb-4.1.0&rect=12%2C96%2C2671%2C1335&q=45&auto=format&w=668&h=324&fit=crop",
-            alt: "Dog",
-            title: null,
-            flipX: false,
-            flipY: false,
-            width: 466,
-            align: "center",
-            inline: false,
-          },
-        },
-      ],
-    },
-  ],
-};
-
 function Preview() {
+  const [content, setContent] = useState(null);
+  const [hasContent, setHasContent] = useState(false);
+
   // Initialize English as default language
   useEffect(() => {
     locale.setLang("en");
   }, []);
+
+  // Load content from localStorage on component mount
+  useEffect(() => {
+    const savedContent = localStorage.getItem(
+      "rich-text-editor-preview-content"
+    );
+    if (savedContent) {
+      try {
+        const parsedContent = JSON.parse(savedContent);
+        setContent(parsedContent);
+        setHasContent(true);
+      } catch (error) {
+        console.error("Failed to parse saved content:", error);
+        setHasContent(false);
+      }
+    } else {
+      setHasContent(false);
+    }
+  }, []);
+
+  const clearSavedContent = () => {
+    localStorage.removeItem("rich-text-editor-preview-content");
+    setContent(null);
+    setHasContent(false);
+    alert("Preview content cleared!");
+  };
 
   return (
     <div
@@ -918,15 +229,101 @@ function Preview() {
       style={{
         maxWidth: 1024,
         margin: "40px auto",
+        padding: "0 24px",
       }}
     >
-      <RichTextRenderEngine
-        content={DEFAULT_DOC}
-        extensions={extensions}
-        dark={false}
-        minHeight="200px"
-        contentClass="w-full"
-      />
+      <div style={{ marginBottom: "20px", textAlign: "center" }}>
+        <div style={{ marginBottom: "10px" }}>
+          <span
+            style={{
+              padding: "4px 8px",
+              backgroundColor: hasContent ? "#10b981" : "#f59e0b",
+              color: "white",
+              borderRadius: "4px",
+              fontSize: "14px",
+              fontWeight: "500",
+            }}
+          >
+            {hasContent ? "📄 Content from Editor" : "⚠️ No Content Saved"}
+          </span>
+        </div>
+        {hasContent && (
+          <button
+            type="button"
+            onClick={clearSavedContent}
+            style={{
+              padding: "8px 16px",
+              backgroundColor: "#ef4444",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              transition: "background-color 0.3s",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = "#dc2626")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#ef4444")
+            }
+          >
+            Clear Content
+          </button>
+        )}
+      </div>
+
+      {hasContent && content ? (
+        <RichTextRenderEngine
+          content={content}
+          extensions={extensions}
+          dark={false}
+          minHeight="200px"
+          contentClass="w-full"
+        />
+      ) : (
+        <div
+          style={{
+            textAlign: "center",
+            padding: "60px 20px",
+            backgroundColor: "#f9fafb",
+            border: "2px dashed #d1d5db",
+            borderRadius: "8px",
+            color: "#6b7280",
+          }}
+        >
+          <div style={{ fontSize: "48px", marginBottom: "16px" }}>📝</div>
+          <h2
+            style={{ fontSize: "24px", marginBottom: "8px", color: "#374151" }}
+          >
+            No Content to Preview
+          </h2>
+          <p style={{ fontSize: "16px", marginBottom: "24px" }}>
+            Go to the editor and click "Save to Preview" to see your content
+            here.
+          </p>
+          <a
+            href="/"
+            style={{
+              padding: "12px 24px",
+              backgroundColor: "#3b82f6",
+              color: "white",
+              textDecoration: "none",
+              borderRadius: "6px",
+              display: "inline-block",
+              transition: "background-color 0.3s",
+              fontWeight: "500",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = "#2563eb")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#3b82f6")
+            }
+          >
+            ← Go to Editor
+          </a>
+        </div>
+      )}
     </div>
   );
 }
