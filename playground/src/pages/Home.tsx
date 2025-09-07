@@ -29,6 +29,7 @@ import { Heading } from "@remarkablejames/rich-text-editor/heading";
 import { Highlight } from "@remarkablejames/rich-text-editor/highlight";
 import { History } from "@remarkablejames/rich-text-editor/history";
 import { HorizontalRule } from "@remarkablejames/rich-text-editor/horizontalrule";
+import { PaywallSeparator } from "@remarkablejames/rich-text-editor/paywallseparator";
 import { Iframe } from "@remarkablejames/rich-text-editor/iframe";
 import { Image } from "@remarkablejames/rich-text-editor/image";
 import { ImageGif } from "@remarkablejames/rich-text-editor/imagegif";
@@ -137,6 +138,7 @@ const extensions = [
   Blockquote,
   SlashCommand,
   HorizontalRule,
+  PaywallSeparator,
   Code.configure({
     toolbar: false,
   }),
@@ -205,14 +207,14 @@ const DEFAULT = {
         indent: 0,
         lineHeight: "1",
         dir: "auto",
-        level: 1
+        level: 1,
       },
       content: [
         {
           type: "text",
-          text: "Rich Text Editor"
-        }
-      ]
+          text: "Rich Text Editor",
+        },
+      ],
     },
     {
       type: "paragraph",
@@ -220,12 +222,12 @@ const DEFAULT = {
         textAlign: null,
         indent: 0,
         lineHeight: "1",
-        dir: "auto"
+        dir: "auto",
       },
       content: [
         {
           type: "text",
-          text: "A modern WYSIWYG rich text editor based on "
+          text: "A modern WYSIWYG rich text editor based on ",
         },
         {
           type: "text",
@@ -236,15 +238,15 @@ const DEFAULT = {
                 href: "https://github.com/scrumpy/tiptap",
                 target: "_blank",
                 rel: "noopener noreferrer nofollow",
-                class: "link"
-              }
-            }
+                class: "link",
+              },
+            },
           ],
-          text: "tiptap"
+          text: "tiptap",
         },
         {
           type: "text",
-          text: " and "
+          text: " and ",
         },
         {
           type: "text",
@@ -255,17 +257,17 @@ const DEFAULT = {
                 href: "https://ui.shadcn.com/",
                 target: "_blank",
                 rel: "noopener noreferrer nofollow",
-                class: "link"
-              }
-            }
+                class: "link",
+              },
+            },
           ],
-          text: "shadcn ui"
+          text: "shadcn ui",
         },
         {
           type: "text",
-          text: " for Reactjs"
-        }
-      ]
+          text: " for Reactjs",
+        },
+      ],
     },
     {
       type: "paragraph",
@@ -273,8 +275,8 @@ const DEFAULT = {
         textAlign: null,
         indent: 0,
         lineHeight: "1",
-        dir: "auto"
-      }
+        dir: "auto",
+      },
     },
     {
       type: "paragraph",
@@ -282,8 +284,8 @@ const DEFAULT = {
         textAlign: "center",
         indent: 0,
         lineHeight: "1",
-        dir: "auto"
-      }
+        dir: "auto",
+      },
     },
     {
       type: "paragraph",
@@ -291,8 +293,8 @@ const DEFAULT = {
         textAlign: null,
         indent: 0,
         lineHeight: "1",
-        dir: "auto"
-      }
+        dir: "auto",
+      },
     },
     {
       type: "paragraph",
@@ -300,7 +302,7 @@ const DEFAULT = {
         textAlign: null,
         indent: 0,
         lineHeight: null,
-        dir: "auto"
+        dir: "auto",
       },
       content: [
         {
@@ -313,10 +315,10 @@ const DEFAULT = {
             flipY: false,
             width: 500,
             align: "center",
-            inline: false
-          }
-        }
-      ]
+            inline: false,
+          },
+        },
+      ],
     },
     {
       type: "paragraph",
@@ -324,8 +326,8 @@ const DEFAULT = {
         textAlign: null,
         indent: 0,
         lineHeight: "1",
-        dir: "auto"
-      }
+        dir: "auto",
+      },
     },
     {
       type: "paragraph",
@@ -333,11 +335,11 @@ const DEFAULT = {
         textAlign: null,
         indent: 0,
         lineHeight: "1",
-        dir: "auto"
-      }
+        dir: "auto",
+      },
     },
     {
-      type: "horizontalRule"
+      type: "horizontalRule",
     },
     {
       type: "heading",
@@ -347,14 +349,14 @@ const DEFAULT = {
         indent: 0,
         lineHeight: "1",
         dir: "auto",
-        level: 2
+        level: 2,
       },
       content: [
         {
           type: "text",
-          text: "Demo"
-        }
-      ]
+          text: "Demo",
+        },
+      ],
     },
     {
       type: "paragraph",
@@ -362,12 +364,12 @@ const DEFAULT = {
         textAlign: null,
         indent: 0,
         lineHeight: "1",
-        dir: "auto"
+        dir: "auto",
       },
       content: [
         {
           type: "text",
-          text: "👉"
+          text: "👉",
         },
         {
           type: "text",
@@ -378,13 +380,13 @@ const DEFAULT = {
                 href: "https://reactjs-tiptap-editor.vercel.app/",
                 target: "_blank",
                 rel: "noopener noreferrer nofollow",
-                class: "link"
-              }
-            }
+                class: "link",
+              },
+            },
           ],
-          text: "Demo"
-        }
-      ]
+          text: "Demo",
+        },
+      ],
     },
     {
       type: "heading",
@@ -394,14 +396,14 @@ const DEFAULT = {
         indent: 0,
         lineHeight: "1",
         dir: "auto",
-        level: 2
+        level: 2,
       },
       content: [
         {
           type: "text",
-          text: "Features"
-        }
-      ]
+          text: "Features",
+        },
+      ],
     },
     {
       type: "bulletList",
@@ -415,12 +417,12 @@ const DEFAULT = {
                 textAlign: null,
                 indent: 0,
                 lineHeight: "1",
-                dir: "auto"
+                dir: "auto",
               },
               content: [
                 {
                   type: "text",
-                  text: "Use "
+                  text: "Use ",
                 },
                 {
                   type: "text",
@@ -431,19 +433,19 @@ const DEFAULT = {
                         href: "https://ui.shadcn.com/",
                         target: "_blank",
                         rel: "noopener noreferrer nofollow",
-                        class: "link"
-                      }
-                    }
+                        class: "link",
+                      },
+                    },
                   ],
-                  text: "shadcn ui"
+                  text: "shadcn ui",
                 },
                 {
                   type: "text",
-                  text: " components"
-                }
-              ]
-            }
-          ]
+                  text: " components",
+                },
+              ],
+            },
+          ],
         },
         {
           type: "listItem",
@@ -454,16 +456,16 @@ const DEFAULT = {
                 textAlign: null,
                 indent: 0,
                 lineHeight: "1",
-                dir: "auto"
+                dir: "auto",
               },
               content: [
                 {
                   type: "text",
-                  text: "Markdown support"
-                }
-              ]
-            }
-          ]
+                  text: "Markdown support",
+                },
+              ],
+            },
+          ],
         },
         {
           type: "listItem",
@@ -474,16 +476,16 @@ const DEFAULT = {
                 textAlign: null,
                 indent: 0,
                 lineHeight: "1",
-                dir: "auto"
+                dir: "auto",
               },
               content: [
                 {
                   type: "text",
-                  text: "TypeScript support"
-                }
-              ]
-            }
-          ]
+                  text: "TypeScript support",
+                },
+              ],
+            },
+          ],
         },
         {
           type: "listItem",
@@ -494,16 +496,16 @@ const DEFAULT = {
                 textAlign: null,
                 indent: 0,
                 lineHeight: "1",
-                dir: "auto"
+                dir: "auto",
               },
               content: [
                 {
                   type: "text",
-                  text: "I18n support (vi, en, zh, pt)"
-                }
-              ]
-            }
-          ]
+                  text: "I18n support (vi, en, zh, pt)",
+                },
+              ],
+            },
+          ],
         },
         {
           type: "listItem",
@@ -514,16 +516,16 @@ const DEFAULT = {
                 textAlign: null,
                 indent: 0,
                 lineHeight: "1",
-                dir: "auto"
+                dir: "auto",
               },
               content: [
                 {
                   type: "text",
-                  text: "React support"
-                }
-              ]
-            }
-          ]
+                  text: "React support",
+                },
+              ],
+            },
+          ],
         },
         {
           type: "listItem",
@@ -534,16 +536,16 @@ const DEFAULT = {
                 textAlign: null,
                 indent: 0,
                 lineHeight: "1",
-                dir: "auto"
+                dir: "auto",
               },
               content: [
                 {
                   type: "text",
-                  text: "Slash Commands"
-                }
-              ]
-            }
-          ]
+                  text: "Slash Commands",
+                },
+              ],
+            },
+          ],
         },
         {
           type: "listItem",
@@ -554,16 +556,16 @@ const DEFAULT = {
                 textAlign: null,
                 indent: 0,
                 lineHeight: "1",
-                dir: "auto"
+                dir: "auto",
               },
               content: [
                 {
                   type: "text",
-                  text: "Multi Column"
-                }
-              ]
-            }
-          ]
+                  text: "Multi Column",
+                },
+              ],
+            },
+          ],
         },
         {
           type: "listItem",
@@ -574,16 +576,16 @@ const DEFAULT = {
                 textAlign: null,
                 indent: 0,
                 lineHeight: "1",
-                dir: "auto"
+                dir: "auto",
               },
               content: [
                 {
                   type: "text",
-                  text: "TailwindCss"
-                }
-              ]
-            }
-          ]
+                  text: "TailwindCss",
+                },
+              ],
+            },
+          ],
         },
         {
           type: "listItem",
@@ -594,16 +596,16 @@ const DEFAULT = {
                 textAlign: null,
                 indent: 0,
                 lineHeight: "1",
-                dir: "auto"
+                dir: "auto",
               },
               content: [
                 {
                   type: "text",
-                  text: "Support emoji"
-                }
-              ]
-            }
-          ]
+                  text: "Support emoji",
+                },
+              ],
+            },
+          ],
         },
         {
           type: "listItem",
@@ -614,16 +616,16 @@ const DEFAULT = {
                 textAlign: null,
                 indent: 0,
                 lineHeight: "1",
-                dir: "auto"
+                dir: "auto",
               },
               content: [
                 {
                   type: "text",
-                  text: "Support iframe"
-                }
-              ]
-            }
-          ]
+                  text: "Support iframe",
+                },
+              ],
+            },
+          ],
         },
         {
           type: "listItem",
@@ -634,18 +636,18 @@ const DEFAULT = {
                 textAlign: null,
                 indent: 0,
                 lineHeight: "1",
-                dir: "auto"
+                dir: "auto",
               },
               content: [
                 {
                   type: "text",
-                  text: "Support mermaid"
-                }
-              ]
-            }
-          ]
-        }
-      ]
+                  text: "Support mermaid",
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
     {
       type: "heading",
@@ -655,14 +657,14 @@ const DEFAULT = {
         indent: 0,
         lineHeight: "1",
         dir: "auto",
-        level: 2
+        level: 2,
       },
       content: [
         {
           type: "text",
-          text: "Installation"
-        }
-      ]
+          text: "Installation",
+        },
+      ],
     },
     {
       type: "codeBlock",
@@ -672,19 +674,19 @@ const DEFAULT = {
         lineNumbers: true,
         wordWrap: false,
         tabSize: 2,
-        shouldFocus: false
+        shouldFocus: false,
       },
       content: [
         {
           type: "text",
           marks: [
             {
-              type: "code"
-            }
+              type: "code",
+            },
           ],
-          text: "pnpm install reactjs-tiptap-editor"
-        }
-      ]
+          text: "pnpm install reactjs-tiptap-editor",
+        },
+      ],
     },
     {
       type: "paragraph",
@@ -692,10 +694,10 @@ const DEFAULT = {
         textAlign: null,
         indent: 0,
         lineHeight: "1",
-        dir: "auto"
-      }
-    }
-  ]
+        dir: "auto",
+      },
+    },
+  ],
 };
 
 function debounce(func: any, wait: number) {
@@ -763,8 +765,12 @@ function Home() {
               display: "inline-block",
               transition: "background-color 0.3s",
             }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#059669"}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#10b981"}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = "#059669")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#10b981")
+            }
           >
             Go to Preview →
           </Link>
@@ -832,7 +838,9 @@ function Home() {
             height: 500,
           }}
           readOnly
-          value={typeof content === "string" ? content : JSON.stringify(content)}
+          value={
+            typeof content === "string" ? content : JSON.stringify(content)
+          }
         />
       )}
     </div>

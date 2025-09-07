@@ -2,456 +2,331 @@
   {
     "name": "BaseKit.ts",
     "package": "BaseKit.ts",
-    "alias": [
-      "BaseKit"
-    ]
+    "alias": ["BaseKit"]
   },
   {
     "name": "Attachment.ts",
     "package": "Attachment",
-    "alias": [
-      "Attachment"
-    ]
+    "alias": ["Attachment"]
   },
   {
     "name": "Blockquote.ts",
     "package": "Blockquote",
-    "alias": [
-      "Blockquote"
-    ]
+    "alias": ["Blockquote"]
   },
   {
     "name": "Bold.ts",
     "package": "Bold",
-    "alias": [
-      "Bold"
-    ]
+    "alias": ["Bold"]
   },
   {
     "name": "BulletList.ts",
     "package": "BulletList",
-    "alias": [
-      "BulletList"
-    ]
+    "alias": ["BulletList"]
   },
   {
     "name": "Clear.ts",
     "package": "Clear",
-    "alias": [
-      "Clear"
-    ]
+    "alias": ["Clear"]
   },
   {
     "name": "Code.ts",
     "package": "Code",
-    "alias": [
-      "Code"
-    ]
+    "alias": ["Code"]
   },
   {
     "name": "CodeView.ts",
     "package": "CodeView",
-    "alias": [
-      "CodeView"
-    ]
+    "alias": ["CodeView"]
   },
   {
     "name": "CodeBlock.ts",
     "package": "CodeBlock",
-    "alias": [
-      "CodeBlock"
-    ]
+    "alias": ["CodeBlock"]
   },
   {
     "name": "Color.ts",
     "package": "Color",
-    "alias": [
-      "Color"
-    ]
+    "alias": ["Color"]
   },
   {
     "name": "Drawer.ts",
     "package": "Drawer",
-    "alias": [
-      "Drawer"
-    ]
+    "alias": ["Drawer"]
   },
   {
     "name": "Document.ts",
     "package": "Document",
-    "alias": [
-      "Document"
-    ]
+    "alias": ["Document"]
   },
   {
     "name": "Emoji.ts",
     "package": "Emoji",
-    "alias": [
-      "Emoji"
-    ]
+    "alias": ["Emoji"]
   },
   {
     "name": "Excalidraw.ts",
     "package": "Excalidraw",
-    "alias": [
-      "Excalidraw"
-    ]
+    "alias": ["Excalidraw"]
   },
   {
     "name": "ExportPdf.ts",
     "package": "ExportPdf",
-    "alias": [
-      "ExportPdf"
-    ]
+    "alias": ["ExportPdf"]
   },
   {
     "name": "ExportWord.ts",
     "package": "ExportWord",
-    "alias": [
-      "ExportWord"
-    ]
+    "alias": ["ExportWord"]
   },
   {
     "name": "FontFamily.ts",
     "package": "FontFamily",
-    "alias": [
-      "FontFamily"
-    ]
+    "alias": ["FontFamily"]
   },
   {
     "name": "FontSize.ts",
     "package": "FontSize",
-    "alias": [
-      "FontSize"
-    ]
+    "alias": ["FontSize"]
   },
   {
     "name": "FormatPainter.ts",
     "package": "FormatPainter",
-    "alias": [
-      "FormatPainter"
-    ]
+    "alias": ["FormatPainter"]
   },
   {
     "name": "Heading.ts",
     "package": "Heading",
-    "alias": [
-      "Heading"
-    ]
+    "alias": ["Heading"]
   },
   {
     "name": "Highlight.ts",
     "package": "Highlight",
-    "alias": [
-      "Highlight"
-    ]
+    "alias": ["Highlight"]
   },
   {
     "name": "History.ts",
     "package": "History",
-    "alias": [
-      "History"
-    ]
+    "alias": ["History"]
   },
   {
     "name": "HorizontalRule.ts",
     "package": "HorizontalRule",
-    "alias": [
-      "HorizontalRule"
-    ]
+    "alias": ["HorizontalRule"]
   },
   {
     "name": "Iframe.ts",
     "package": "Iframe",
-    "alias": [
-      "Iframe"
-    ]
+    "alias": ["Iframe"]
   },
   {
     "name": "Iframe.ts",
     "package": "Iframe",
-    "alias": [
-      "embed"
-    ]
+    "alias": ["embed"]
   },
   {
     "name": "Image.ts",
     "package": "Image",
-    "alias": [
-      "Image"
-    ]
+    "alias": ["Image"]
   },
   {
     "name": "Image.ts",
     "package": "Image",
-    "alias": [
-      "store"
-    ]
+    "alias": ["store"]
   },
   {
     "name": "ImageGif.ts",
     "package": "ImageGif",
-    "alias": [
-      "ImageGif"
-    ]
+    "alias": ["ImageGif"]
   },
   {
     "name": "ImportWord.ts",
     "package": "ImportWord",
-    "alias": [
-      "ImportWord"
-    ]
+    "alias": ["ImportWord"]
   },
   {
     "name": "Indent.ts",
     "package": "Indent",
-    "alias": [
-      "Indent"
-    ]
+    "alias": ["Indent"]
   },
   {
     "name": "Italic.ts",
     "package": "Italic",
-    "alias": [
-      "Italic"
-    ]
+    "alias": ["Italic"]
   },
   {
     "name": "Katex.ts",
     "package": "Katex",
-    "alias": [
-      "Katex"
-    ]
+    "alias": ["Katex"]
   },
   {
     "name": "LineHeight.ts",
     "package": "LineHeight",
-    "alias": [
-      "LineHeight"
-    ]
+    "alias": ["LineHeight"]
   },
   {
     "name": "Link.ts",
     "package": "Link",
-    "alias": [
-      "Link"
-    ]
+    "alias": ["Link"]
   },
   {
     "name": "ListItem.ts",
     "package": "ListItem",
-    "alias": [
-      "ListItem"
-    ]
+    "alias": ["ListItem"]
   },
   {
     "name": "Mermaid.ts",
     "package": "Mermaid",
-    "alias": [
-      "Mermaid"
-    ]
+    "alias": ["Mermaid"]
   },
   {
     "name": "Mention.ts",
     "package": "Mention",
-    "alias": [
-      "Mention"
-    ]
+    "alias": ["Mention"]
   },
   {
     "name": "MoreMark.ts",
     "package": "MoreMark",
-    "alias": [
-      "MoreMark"
-    ]
+    "alias": ["MoreMark"]
   },
   {
     "name": "MultiColumn.ts",
     "package": "MultiColumn",
-    "alias": [
-      "Column"
-    ]
+    "alias": ["Column"]
   },
   {
     "name": "MultiColumn.ts",
     "package": "MultiColumn",
-    "alias": [
-      "MultiColumn"
-    ]
+    "alias": ["MultiColumn"]
   },
   {
     "name": "OrderedList.ts",
     "package": "OrderedList",
-    "alias": [
-      "OrderedList"
-    ]
+    "alias": ["OrderedList"]
   },
   {
     "name": "SearchAndReplace.ts",
     "package": "SearchAndReplace",
-    "alias": [
-      "SearchAndReplace"
-    ]
+    "alias": ["SearchAndReplace"]
   },
   {
     "name": "Selection.ts",
     "package": "Selection",
-    "alias": [
-      "Selection"
-    ]
+    "alias": ["Selection"]
   },
   {
     "name": "SlashCommand.ts",
     "package": "SlashCommand",
-    "alias": [
-      "SlashCommand"
-    ]
+    "alias": ["SlashCommand"]
   },
   {
     "name": "SlashCommand.ts",
     "package": "SlashCommand",
-    "alias": [
-      "groups"
-    ]
+    "alias": ["groups"]
   },
   {
     "name": "SlashCommand.ts",
     "package": "SlashCommand",
-    "alias": [
-      "types"
-    ]
+    "alias": ["types"]
   },
   {
     "name": "Strike.ts",
     "package": "Strike",
-    "alias": [
-      "Strike"
-    ]
+    "alias": ["Strike"]
   },
   {
     "name": "SubAndSuperScript.ts",
     "package": "SubAndSuperScript",
-    "alias": [
-      "SubAndSuperScript"
-    ]
+    "alias": ["SubAndSuperScript"]
   },
   {
     "name": "Table.ts",
     "package": "Table",
-    "alias": [
-      "Table"
-    ]
+    "alias": ["Table"]
   },
   {
     "name": "Table.ts",
     "package": "Table",
-    "alias": [
-      "cell-background"
-    ]
+    "alias": ["cell-background"]
   },
   {
     "name": "TableOfContent.ts",
     "package": "TableOfContent",
-    "alias": [
-      "TableOfContent"
-    ]
+    "alias": ["TableOfContent"]
   },
   {
     "name": "TaskList.ts",
     "package": "TaskList",
-    "alias": [
-      "TaskList"
-    ]
+    "alias": ["TaskList"]
   },
   {
     "name": "TextAlign.ts",
     "package": "TextAlign",
-    "alias": [
-      "TextAlign"
-    ]
+    "alias": ["TextAlign"]
   },
   {
     "name": "TextBubble.ts",
     "package": "TextBubble",
-    "alias": [
-      "TextBubble"
-    ]
+    "alias": ["TextBubble"]
   },
   {
     "name": "TextDirection.ts",
     "package": "TextDirection",
-    "alias": [
-      "TextDirection"
-    ]
+    "alias": ["TextDirection"]
   },
   {
     "name": "TextUnderline.ts",
     "package": "TextUnderline",
-    "alias": [
-      "TextUnderline"
-    ]
+    "alias": ["TextUnderline"]
   },
   {
     "name": "Twitter.ts",
     "package": "Twitter",
-    "alias": [
-      "Twitter"
-    ]
+    "alias": ["Twitter"]
   },
   {
     "name": "TrailingNode.ts",
     "package": "TrailingNode",
-    "alias": [
-      "TrailingNode"
-    ]
+    "alias": ["TrailingNode"]
   },
   {
     "name": "Video.ts",
     "package": "Video",
-    "alias": [
-      "Video"
-    ]
+    "alias": ["Video"]
   },
   {
     "name": "Video.ts",
     "package": "Video",
-    "alias": [
-      "store"
-    ]
+    "alias": ["store"]
+  },
+  {
+    "name": "PaywallSeparator.ts",
+    "package": "PaywallSeparator",
+    "alias": ["PaywallSeparator"]
   },
   {
     "name": "MultiColumn.ts",
     "package": "MultiColumn",
-    "alias": [
-      "components"
-    ]
+    "alias": ["components"]
   },
   {
     "name": "Table.ts",
     "package": "Table",
-    "alias": [
-      "components"
-    ]
+    "alias": ["components"]
   },
   {
     "name": "Table.ts",
     "package": "Table",
-    "alias": [
-      "components"
-    ]
+    "alias": ["components"]
   },
   {
     "name": "Attachment.ts",
     "package": "Attachment",
-    "alias": [
-      "components"
-    ]
+    "alias": ["components"]
   },
   {
     "name": "Emoji.ts",
     "package": "Emoji",
-    "alias": [
-      "components"
-    ]
+    "alias": ["components"]
   }
 ]

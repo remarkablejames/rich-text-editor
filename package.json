@@ -289,6 +289,16 @@
         "default": "./lib/HorizontalRule.js"
       }
     },
+    "./paywallseparator": {
+      "require": {
+        "types": "./lib/PaywallSeparator.d.cts",
+        "default": "./lib/PaywallSeparator.cjs"
+      },
+      "import": {
+        "types": "./lib/PaywallSeparator.d.ts",
+        "default": "./lib/PaywallSeparator.js"
+      }
+    },
     "./iframe": {
       "require": {
         "types": "./lib/Iframe.d.cts",
@@ -670,6 +680,9 @@
       ],
       "./horizontalrule": [
         "./lib/HorizontalRule.d.ts"
+      ],
+      "./paywallseparator": [
+        "./lib/PaywallSeparator.d.ts"
       ],
       "./iframe": [
         "./lib/Iframe.d.ts"
