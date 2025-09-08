@@ -104,6 +104,7 @@ import { LeftToRight } from '@/components/icons/LeftToRight';
 import { Mermaid } from '@/components/icons/Mermaid';
 import { RightToLeft } from '@/components/icons/RightToLeft';
 import { Twitter } from '@/components/icons/Twitter';
+import { PaywallIcon } from '@/components/icons/PaywallIcon';
 
 import ImportWord from './ImportWord';
 
@@ -215,4 +216,5 @@ export const icons = {
   PencilRuler,
   WrapText,
   Loader,
+  PaywallIcon,
 } as any;

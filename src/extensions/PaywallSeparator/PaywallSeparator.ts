@@ -9,7 +9,8 @@ import PaywallSeparatorView from './components/PaywallSeparatorView';
 /**
  * Options for the PaywallSeparator extension
  */
-export interface PaywallSeparatorOptions extends GeneralOptions<PaywallSeparatorOptions> {
+export interface PaywallSeparatorOptions
+  extends GeneralOptions<PaywallSeparatorOptions> {
   /** HTML attributes to apply to the paywall separator */
   HTMLAttributes: Record<string, unknown>;
 }
@@ -39,80 +40,83 @@ declare module '@tiptap/core' {
  * - Custom NodeView with visual overlay for content creators
  * - Draggable and insertable via commands
  */
-export const PaywallSeparator = /* @__PURE__ */ Node.create<PaywallSeparatorOptions>({
-  name: 'paywallSeparator',
+export const PaywallSeparator =
+  /* @__PURE__ */ Node.create<PaywallSeparatorOptions>({
+    name: 'paywallSeparator',
 
-  addOptions() {
-    return {
-      HTMLAttributes: {},
-      divider: false,
-      spacer: false,
-      toolbar: true,
-      button: ({ editor, t }) => ({
-        component: ActionButton,
-        componentProps: {
-          action: () => editor.commands.insertPaywall(),
-          disabled: !editor.can().insertPaywall(),
-          icon: 'Minus',
-          shortcutKeys: ['mod', 'alt', 'P'],
-          tooltip: t('editor.paywallSeparator.tooltip') || 'Insert paywall separator',
+    addOptions() {
+      return {
+        HTMLAttributes: {},
+        divider: false,
+        spacer: false,
+        toolbar: true,
+        button: ({ editor }) => ({
+          component: ActionButton,
+          componentProps: {
+            action: () => editor.commands.insertPaywall(),
+            disabled: !editor.can().insertPaywall(),
+            icon: 'PaywallIcon',
+            shortcutKeys: ['mod', 'alt', 'P'],
+            tooltip: 'Insert paywall separator',
+          },
+        }),
+      };
+    },
+
+    group: 'block',
+
+    parseHTML() {
+      return [
+        {
+          tag: 'hr[data-paywall="true"]',
         },
-      }),
-    };
-  },
+      ];
+    },
 
-  group: 'block',
+    renderHTML({ HTMLAttributes }) {
+      return [
+        'hr',
+        mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
+          'data-paywall': 'true',
+        }),
+      ];
+    },
 
-  parseHTML() {
-    return [
-      {
-        tag: 'hr[data-paywall="true"]',
-      },
-    ];
-  },
+    addNodeView() {
+      return ReactNodeViewRenderer(PaywallSeparatorView);
+    },
 
-  renderHTML({ HTMLAttributes }) {
-    return [
-      'hr',
-      mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
-        'data-paywall': 'true',
-      }),
-    ];
-  },
+    addCommands() {
+      return {
+        insertPaywall:
+          () =>
+            ({ commands, state }) => {
+            // Check if a paywall separator already exists in the document
+              const { doc } = state;
+              let paywallExists = false;
 
-  addNodeView() {
-    return ReactNodeViewRenderer(PaywallSeparatorView);
-  },
+              doc.descendants((node) => {
+                if (node.type.name === 'paywallSeparator') {
+                  paywallExists = true;
+                  return false; // Stop traversing
+                }
+              });
 
-  addCommands() {
-    return {
-      insertPaywall: () => ({ commands, state }) => {
-        // Check if a paywall separator already exists in the document
-        const { doc } = state;
-        let paywallExists = false;
+              // Prevent inserting if paywall already exists
+              if (paywallExists) {
+                return false;
+              }
 
-        doc.descendants((node) => {
-          if (node.type.name === 'paywallSeparator') {
-            paywallExists = true;
-            return false; // Stop traversing
-          }
-        });
+              return commands.insertContent({
+                type: this.name,
+              });
+            },
+      };
+    },
 
-        // Prevent inserting if paywall already exists
-        if (paywallExists) {
-          return false;
-        }
-
-        return commands.insertContent({
-          type: this.name,
-        });
-      },
-    };
-  },
-
-  addKeyboardShortcuts() {
-    return {
-      'Mod-Alt-p': () => this.editor.commands.insertPaywall(),
-    };
-  },
-});
+    addKeyboardShortcuts() {
+      return {
+        'Mod-Alt-p': () => this.editor.commands.insertPaywall(),
+      };
+    },
+  });

@@ -9,4 +9,5 @@ export * from './MenuDown';
 export * from './SizeL';
 export * from './SizeM';
 export * from './SizeS';
+export * from './PaywallIcon';
 export * from './icons';
