@@ -58,6 +58,7 @@ import "prism-code-editor-lightweight/themes/github-dark.css";
 import "katex/dist/katex.min.css";
 import "easydrawer/styles.css";
 import "@excalidraw/excalidraw/index.css";
+import processPaywallContent from "@/components/paywallProcessor";
 
 function convertBase64ToBlob(base64: string) {
   const arr = base64.split(",");
@@ -276,7 +277,7 @@ function Preview() {
 
       {hasContent && content ? (
         <RichTextRenderEngine
-          content={content}
+          content={processPaywallContent(content)}
           extensions={extensions}
           dark={false}
           minHeight="200px"
