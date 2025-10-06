@@ -122,6 +122,13 @@ const extensions = [
         }, 500);
       });
     },
+    onDelete: (src: string) => {
+      console.log("Image to delete:", src); // logs url of the image that was removed by user
+      // Clean up blob URL if it's a blob
+      if (src.startsWith("blob:")) {
+        URL.revokeObjectURL(src);
+      }
+    },
   }),
   Video.configure({
     upload: (files: File) => {
