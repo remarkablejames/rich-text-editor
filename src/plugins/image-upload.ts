@@ -6,8 +6,8 @@ import { Decoration, DecorationSet } from '@tiptap/pm/view';
 const uploadKey = new PluginKey('upload-image');
 
 interface UploadAction {
-  add?: Array<{ id: string, pos: number, src: string }>
-  remove?: string[]
+  add?: Array<{ id: string; pos: number; src: string }>;
+  remove?: string[];
 }
 
 export function UploadImagesPlugin() {
@@ -29,7 +29,9 @@ export function UploadImagesPlugin() {
           }
         } else if (action?.remove) {
           for (const id of action.remove) {
-            set = set.remove(set.find(undefined, undefined, (spec: any) => spec.id === id));
+            set = set.remove(
+              set.find(undefined, undefined, (spec: any) => spec.id === id)
+            );
           }
         }
 
@@ -58,20 +60,56 @@ function createPlaceholder(src: string): HTMLElement {
 
 function findPlaceholder(state: EditorState, id: string): number | null {
   const decos = uploadKey.getState(state) as DecorationSet;
-  const found = decos.find(undefined, undefined, spec => spec.id === id);
+  const found = decos.find(undefined, undefined, (spec) => spec.id === id);
   return found.length > 0 ? found[0]?.from : null;
 }
 
+export interface ImageMetadata {
+  width: number;
+  height: number;
+  size: number;
+  mimeType: string;
+}
+
 export interface ImageUploadOptions {
-  validateFn?: (file: File) => boolean
-  onUpload: (file: File) => Promise<string | object>
-  postUpload?: (src: string) => Promise<string>
-  defaultInline?: boolean
+  validateFn?: (file: File) => boolean;
+  onUpload: (file: File, metadata: ImageMetadata) => Promise<string | object>;
+  postUpload?: (src: string) => Promise<string>;
+  defaultInline?: boolean;
 }
 
 export type UploadFn = (files: File[], view: EditorView, pos: number) => void;
 
-export function createImageUpload({ validateFn, onUpload, postUpload, defaultInline = false }: ImageUploadOptions): UploadFn {
+async function getImageMetadata(file: File): Promise<ImageMetadata> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+
+    img.addEventListener('load', () => {
+      URL.revokeObjectURL(url);
+      resolve({
+        width: img.naturalWidth,
+        height: img.naturalHeight,
+        size: file.size,
+        mimeType: file.type,
+      });
+    });
+
+    img.addEventListener('error', () => {
+      URL.revokeObjectURL(url);
+      reject(new Error('Failed to load image'));
+    });
+
+    img.src = url;
+  });
+}
+
+export function createImageUpload({
+  validateFn,
+  onUpload,
+  postUpload,
+  defaultInline = false,
+}: ImageUploadOptions): UploadFn {
   return (files, view, pos) => {
     for (const file of files) {
       if (validateFn && !validateFn(file)) {
@@ -90,49 +128,59 @@ export function createImageUpload({ validateFn, onUpload, postUpload, defaultInl
       });
       view.dispatch(tr);
 
-      onUpload(file).then(
-        async (src) => {
-          if (postUpload && typeof src === 'string') {
-            src = await postUpload(src);
+      getImageMetadata(file)
+        .then(async (metadata) => {
+          return onUpload(file, metadata);
+        })
+        .then(
+          async (src) => {
+            if (postUpload && typeof src === 'string') {
+              src = await postUpload(src);
+            }
+
+            const { schema } = view.state;
+            let placeholderPos = findPlaceholder(view.state, id);
+            if (placeholderPos === null) {
+              return;
+            }
+
+            const imageSrc = typeof src === 'object' ? result : src;
+            const node = schema.nodes.image?.create({
+              src: imageSrc,
+              inline: defaultInline,
+            });
+            if (!node) {
+              return;
+            }
+
+            // check position larger than doc.content.size
+            const { doc } = view.state;
+            if (placeholderPos > doc.content.size) {
+              placeholderPos = doc.content.size - 1;
+            }
+
+            const transaction = view.state.tr
+              .replaceWith(placeholderPos, placeholderPos, node)
+              .setMeta(uploadKey, { remove: [id] });
+
+            view.dispatch(transaction);
+          },
+          () => {
+            const transaction = view.state.tr
+              .delete(pos, pos)
+              .setMeta(uploadKey, { remove: [id] });
+            view.dispatch(transaction);
           }
-
-          const { schema } = view.state;
-          let placeholderPos = findPlaceholder(view.state, id);
-          if (placeholderPos === null) {
-            return;
-          }
-
-          const imageSrc = typeof src === 'object' ? result : src;
-          const node = schema.nodes.image?.create({
-            src: imageSrc,
-            inline: defaultInline
-          });
-          if (!node) {
-            return;
-          }
-
-          // check position larger than doc.content.size
-          const { doc } = view.state;
-          if (placeholderPos > doc.content.size) {
-            placeholderPos = doc.content.size - 1;
-          }
-
-          const transaction = view.state.tr
-            .replaceWith(placeholderPos, placeholderPos, node)
-            .setMeta(uploadKey, { remove: [id] });
-
-          view.dispatch(transaction);
-        },
-        () => {
-          const transaction = view.state.tr.delete(pos, pos).setMeta(uploadKey, { remove: [id] });
-          view.dispatch(transaction);
-        },
-      );
+        );
     }
   };
 }
 
-export function handleImagePaste(view: EditorView, event: ClipboardEvent, uploadFn: UploadFn): boolean {
+export function handleImagePaste(
+  view: EditorView,
+  event: ClipboardEvent,
+  uploadFn: UploadFn
+): boolean {
   const files = [...(event.clipboardData?.files || [])];
   if (files.length > 0) {
     event.preventDefault();
@@ -143,7 +191,12 @@ export function handleImagePaste(view: EditorView, event: ClipboardEvent, upload
   return false;
 }
 
-export function handleImageDrop(view: EditorView, event: DragEvent, moved: boolean, uploadFn: UploadFn): boolean {
+export function handleImageDrop(
+  view: EditorView,
+  event: DragEvent,
+  moved: boolean,
+  uploadFn: UploadFn
+): boolean {
   const files = [...(event.dataTransfer?.files || [])];
   if (!moved && files.length > 0) {
     event.preventDefault();

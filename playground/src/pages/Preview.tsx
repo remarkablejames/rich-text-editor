@@ -110,7 +110,13 @@ const extensions = [
   }),
   Link,
   Image.configure({
-    upload: (files: File) => {
+    upload: (files: File, metadata) => {
+      // metadata contains: width, height, size (in bytes), and mimeType
+      console.log("Image metadata:", metadata);
+      console.log(
+        `Uploading image: ${metadata.width}x${metadata.height}, ${metadata.size} bytes, ${metadata.mimeType}`
+      );
+
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve(URL.createObjectURL(files));

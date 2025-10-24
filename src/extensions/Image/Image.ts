@@ -11,6 +11,7 @@ import {
   createImageUpload,
   handleImageDrop,
   handleImagePaste,
+  type ImageMetadata,
 } from '@/plugins/image-upload';
 import type { GeneralOptions } from '@/types';
 
@@ -61,7 +62,7 @@ declare module '@tiptap/core' {
 
 export interface IImageOptions extends GeneralOptions<IImageOptions> {
   /** Function for uploading files */
-  upload?: (file: File) => Promise<string>;
+  upload?: (file: File, metadata: ImageMetadata) => Promise<string>;
 
   /** Function for deleting uploaded files when images are removed */
   onDelete?: (src: string) => Promise<void> | void;

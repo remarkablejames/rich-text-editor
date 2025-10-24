@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import {
   ActionButton,
@@ -12,19 +12,19 @@ import {
   TabsTrigger,
   useToast,
   IconComponent,
-} from "@/components";
+} from '@/components';
 import {
   Dialog,
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import Image from "@/extensions/Image/Image";
-import { actionDialogImage } from "@/extensions/Image/store";
-import { useLocale } from "@/locales";
-import { listenEvent } from "@/utils/customEvents/customEvents";
-import { EVENTS } from "@/utils/customEvents/events.constant";
-import { validateFiles } from "@/utils/validateFile";
+} from '@/components/ui/dialog';
+import Image from '@/extensions/Image/Image';
+import { useLocale } from '@/locales';
+import type { ImageMetadata } from '@/plugins/image-upload';
+import { listenEvent } from '@/utils/customEvents/customEvents';
+import { EVENTS } from '@/utils/customEvents/events.constant';
+import { validateFiles } from '@/utils/validateFile';
 
 function ActionImageButton(props: any) {
   const { t } = useLocale();
@@ -37,8 +37,8 @@ function ActionImageButton(props: any) {
     setOpen(evt.detail);
   };
 
-  const [link, setLink] = useState<string>("");
-  const [alt, setAlt] = useState<string>("");
+  const [link, setLink] = useState<string>('');
+  const [alt, setAlt] = useState<string>('');
   const fileInput = useRef<HTMLInputElement>(null);
 
   const defaultInline =
@@ -66,6 +66,30 @@ function ActionImageButton(props: any) {
     };
   }, []);
 
+  async function getImageMetadata(file: File): Promise<ImageMetadata> {
+    return new Promise((resolve, reject) => {
+      const img = new window.Image();
+      const url = URL.createObjectURL(file);
+
+      img.addEventListener('load', () => {
+        URL.revokeObjectURL(url);
+        resolve({
+          width: img.naturalWidth,
+          height: img.naturalHeight,
+          size: file.size,
+          mimeType: file.type,
+        });
+      });
+
+      img.addEventListener('error', () => {
+        URL.revokeObjectURL(url);
+        reject(new Error('Failed to load image'));
+      });
+
+      img.src = url;
+    });
+  }
+
   async function handleFile(event: any) {
     const files = event?.target?.files;
     if (
@@ -74,7 +98,7 @@ function ActionImageButton(props: any) {
       files.length === 0 ||
       isUploading
     ) {
-      event.target.value = "";
+      event.target.value = '';
       return;
     }
 
@@ -87,7 +111,7 @@ function ActionImageButton(props: any) {
     });
 
     if (validFiles.length <= 0) {
-      event.target.value = "";
+      event.target.value = '';
       return;
     }
 
@@ -96,9 +120,10 @@ function ActionImageButton(props: any) {
       if (uploadOptions?.multiple) {
         // Handle multiple files upload
         const uploadPromises = validFiles.map(async (file) => {
-          let src = "";
+          let src = '';
           if (uploadOptions.upload) {
-            src = await uploadOptions.upload(file);
+            const metadata = await getImageMetadata(file);
+            src = await uploadOptions.upload(file, metadata);
           } else {
             src = URL.createObjectURL(file);
           }
@@ -117,9 +142,10 @@ function ActionImageButton(props: any) {
       } else {
         // Single file upload (take the first valid file)
         const file = validFiles[0];
-        let src = "";
+        let src = '';
         if (uploadOptions.upload) {
-          src = await uploadOptions.upload(file);
+          const metadata = await getImageMetadata(file);
+          src = await uploadOptions.upload(file, metadata);
         } else {
           src = URL.createObjectURL(file);
         }
@@ -133,21 +159,21 @@ function ActionImageButton(props: any) {
       setOpen(false);
       setImageInline(defaultInline);
     } catch (error) {
-      console.error("Error uploading image", error);
+      console.error('Error uploading image', error);
       if (uploadOptions.onError) {
         uploadOptions.onError({
-          type: "upload",
-          message: t("editor.upload.error"),
+          type: 'upload',
+          message: t('editor.upload.error'),
         });
       } else {
         toast({
-          variant: "destructive",
-          title: t("editor.upload.error"),
+          variant: 'destructive',
+          title: t('editor.upload.error'),
         });
       }
     } finally {
       setIsUploading(false);
-      event.target.value = "";
+      event.target.value = '';
     }
   }
 
@@ -162,7 +188,7 @@ function ActionImageButton(props: any) {
       .run();
     setOpen(false);
     setImageInline(defaultInline);
-    setLink("");
+    setLink('');
   }
 
   function handleClick(e: any) {
@@ -181,35 +207,37 @@ function ActionImageButton(props: any) {
       </DialogTrigger>
 
       <DialogContent>
-        <DialogTitle>{t("editor.image.dialog.title")}</DialogTitle>
+        <DialogTitle>
+          {t('editor.image.dialog.title')}
+        </DialogTitle>
 
         <Tabs
           activationMode="manual"
           defaultValue={
-            uploadOptions.resourceImage === "both" ||
-            uploadOptions.resourceImage === "upload"
-              ? "upload"
-              : "link"
+            uploadOptions.resourceImage === 'both' ||
+            uploadOptions.resourceImage === 'upload'
+              ? 'upload'
+              : 'link'
           }
         >
           <TabsList className="richtext-grid richtext-w-full richtext-grid-cols-2">
-            {uploadOptions.resourceImage === "both" ||
-            uploadOptions.resourceImage === "upload" ? (
-              <TabsTrigger value="upload">
-                {t("editor.image.dialog.tab.upload")}
-              </TabsTrigger>
-            ) : (
-              <></>
-            )}
+            {uploadOptions.resourceImage === 'both' ||
+            uploadOptions.resourceImage === 'upload' ? (
+                <TabsTrigger value="upload">
+                  {t('editor.image.dialog.tab.upload')}
+                </TabsTrigger>
+              ) : (
+                <></>
+              )}
 
-            {uploadOptions.resourceImage === "both" ||
-            uploadOptions.resourceImage === "link" ? (
-              <TabsTrigger value="link">
-                {t("editor.image.dialog.tab.url")}
-              </TabsTrigger>
-            ) : (
-              <></>
-            )}
+            {uploadOptions.resourceImage === 'both' ||
+            uploadOptions.resourceImage === 'link' ? (
+                <TabsTrigger value="link">
+                  {t('editor.image.dialog.tab.url')}
+                </TabsTrigger>
+              ) : (
+                <></>
+              )}
           </TabsList>
 
           <div className="richtext-my-[10px] richtext-flex richtext-items-center richtext-gap-[4px]">
@@ -220,11 +248,15 @@ function ActionImageButton(props: any) {
               }}
             />
 
-            <Label>{t("editor.link.dialog.inline")}</Label>
+            <Label>
+              {t('editor.link.dialog.inline')}
+            </Label>
           </div>
 
           <div className="richtext-my-[10px] ">
-            <Label className="mb-[6px]">Alt</Label>
+            <Label className="mb-[6px]">
+              Alt
+            </Label>
 
             <Input
               onChange={(e) => setAlt(e.target.value)}
@@ -243,7 +275,7 @@ function ActionImageButton(props: any) {
             >
               {isUploading ? (
                 <>
-                  {t("editor.imageUpload.uploading")}
+                  {t('editor.imageUpload.uploading')}
 
                   <IconComponent
                     className="richtext-ml-1 richtext-animate-spin"
@@ -251,17 +283,17 @@ function ActionImageButton(props: any) {
                   />
                 </>
               ) : (
-                t("editor.image.dialog.tab.upload")
+                t('editor.image.dialog.tab.upload')
               )}
             </Button>
 
             <input
               // accept="image/*"
-              accept={uploadOptions.acceptMimes.join(",") || "image/*"}
+              accept={uploadOptions.acceptMimes.join(',') || 'image/*'}
               multiple={uploadOptions.multiple}
               onChange={handleFile}
               ref={fileInput}
-              style={{ display: "none" }}
+              style={{ display: 'none' }}
               type="file"
             />
           </TabsContent>
@@ -272,14 +304,14 @@ function ActionImageButton(props: any) {
                 <Input
                   autoFocus
                   onChange={(e) => setLink(e.target.value)}
-                  placeholder={t("editor.image.dialog.placeholder")}
+                  placeholder={t('editor.image.dialog.placeholder')}
                   required
                   type="url"
                   value={link}
                 />
 
                 <Button type="submit">
-                  {t("editor.image.dialog.button.apply")}
+                  {t('editor.image.dialog.button.apply')}
                 </Button>
               </div>
             </form>
